@@ -38,7 +38,7 @@ export class AddComponent {
   if (this.user) {
     if(this.selectedFile)
     {
-      this.user.user_image = this.selectedFile;
+      this.user.image = this.selectedFile;
     }
     console.log(this.user);
 

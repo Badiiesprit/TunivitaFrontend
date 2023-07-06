@@ -14,7 +14,11 @@ export class UserService {
   }
 
   add(user: User) {
-    return this.http.post<User>(`${this.url}addUser`, user);
+    const formData = new FormData();
+    Object.entries(user).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+    return this.http.post<User>(`${this.url}addUser`, formData);
   }
 
   delete(id: number) {
@@ -51,7 +55,11 @@ getById(id:string): Observable<any> {
   update(id:String, u: User) {
     console.log(id)
   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-  return this.http.put(this.url+`update/`+id, u , { headers });
+  const formData = new FormData();
+  Object.entries(u).forEach(([key, value]) => {
+    formData.append(key, value);
+  });
+  return this.http.post(this.url+`update/`+id, formData , { headers });
   }
 
   search(id:number){

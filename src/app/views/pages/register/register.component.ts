@@ -18,7 +18,7 @@ export class RegisterComponent {
   public email: string;
   public password: string;
   public cpassword: string;
-  public user_image: string;
+  public image: string;
   public date_birth: Date;
   public address: string;
   public state: string;
@@ -43,7 +43,7 @@ export class RegisterComponent {
       phone: this.phone,
       email: this.email,
       password: this.password,
-      user_image: "",
+      image: "",
       date_birth: this.date_birth,
       address: this.address,
       state: this.state,
