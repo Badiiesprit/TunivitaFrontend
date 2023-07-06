@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Service } from 'src/app/model/service';
-import { ServiceService } from 'src/app/services/admin/service/service.service';
+import { Center } from 'src/app/model/center';
+import { CenterService } from 'src/app/services/admin/center/center.service';
 import { HttpClient } from '@angular/common/http';
 import { ImageService } from 'src/app/services/admin/image/image.service';
 import { Image } from 'src/app/model/image';
@@ -13,10 +13,10 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./list-centres-cx.component.scss']
 })
 export class ListCentresCxComponent {
-  services: any[] = [];
+  centers: any[] = [];
   public motcle: string;
   public baseurl = environment.url;
-  filteredServices: any[] = [];
+  filteredCenters: any[] = [];
   currentPage: number = 1; // Current page number
   itemsPerPage: number = 8; // Number of items to display per page
   sortOrder: string = 'asc'; // Sort order for date sorting
@@ -24,39 +24,41 @@ export class ListCentresCxComponent {
 
 
   constructor(
-    private serviceService: ServiceService,
+    private centerService: CenterService,
     private http: HttpClient,
     private imageService: ImageService
   ) {}
 
   ngOnInit() {
-    this.serviceService.getAll().subscribe(
+    this.centerService.getAll().subscribe(
       (response) => {
-        this.services = response.services;
-        this.filteredServices = this.services;
-        console.log(this.services);
+        this.centers = response.result;
+        this.filteredCenters = this.centers;
+        console.log(this.centers);
+        console.log(this.filteredCenters);
       },
       (error) => {
-        console.error('Error fetching services:', error);
+        console.error('Error fetching centers:', error);
       }
     );
+
   }
 
   search(): void {
     if (this.motcle) {
-      this.filteredServices = this.services.filter(service =>
-        service.name.toLowerCase().includes(this.motcle.toLowerCase()) ||
-        service.description.toLowerCase().includes(this.motcle.toLowerCase()) ||
-        service.location.toLowerCase().includes(this.motcle.toLowerCase())
+      this.filteredCenters = this.centers.filter(center =>
+        center.name.toLowerCase().includes(this.motcle.toLowerCase()) ||
+        center.description.toLowerCase().includes(this.motcle.toLowerCase()) ||
+        center.location.toLowerCase().includes(this.motcle.toLowerCase())
       );
     } else {
-      this.filteredServices = this.services;
+      this.filteredCenters = this.centers;
     }
     this.currentPage = 1; // Reset current page to 1 after search
   }
 
   get totalPages(): number {
-    return Math.ceil(this.filteredServices.length / this.itemsPerPage);
+    return Math.ceil(this.filteredCenters.length / this.itemsPerPage);
   }
 
   getPageNumbers(): number[] {
@@ -66,11 +68,11 @@ export class ListCentresCxComponent {
 
 
 
-  sortServicesByDate(): void {
-    let arrayToSort = this.services;
+  sortCentersByDate(): void {
+    let arrayToSort = this.centers;
 
     if (this.motcle) {
-      arrayToSort = this.filteredServices;
+      arrayToSort = this.filteredCenters;
     }
 
     arrayToSort.sort((a, b) => {

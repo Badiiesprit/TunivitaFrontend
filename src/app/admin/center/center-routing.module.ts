@@ -5,10 +5,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListeComponent } from './liste/liste.component';
 import { FormComponent } from './form/form.component';
 import { ShowComponent } from './show/show.component';
+import { AuthGuard } from '../../auth.guard';
+
 const routes: Routes = [
   {
     path: '',
     component: ListeComponent,
+    canActivate: [AuthGuard],
     data: {
       title: 'Liste Center',
     },
@@ -16,6 +19,7 @@ const routes: Routes = [
   {
     path: 'add',
     component: FormComponent,
+    canActivate: [AuthGuard],
     data: {
       title: 'Add Center',
     },
@@ -23,6 +27,7 @@ const routes: Routes = [
   {
     path: 'update/:id',
     component: FormComponent,
+    canActivate: [AuthGuard],
     data: {
       title: 'Update Center',
     },
@@ -31,6 +36,7 @@ const routes: Routes = [
   {
     path: 'show/:id',
     component: ShowComponent,
+    canActivate: [AuthGuard],
     data: {
       title: 'Update Center',
     },
