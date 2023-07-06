@@ -45,9 +45,6 @@ export class ListeServiceComponent implements OnInit {
 
 
     ngOnInit() {
-      const startDate = new Date(); // Set the desired start date
-      const endDate = new Date();
-
       this.serviceService.getAll().subscribe(
         (response) => {
           this.list = response.services;
@@ -81,39 +78,6 @@ export class ListeServiceComponent implements OnInit {
           }
         );
     }
-
-
-
-
-
-
-    showServiceDetails(service: Service) {
-      this.selectedService = service;
-      this.showDetails = true;
-      console.log(service.image);
-
-
-      this.imageService.searsh(service.image as string).subscribe((response: Image) => {
-        console.log("Response", response);
-        this.imageUrl=response.path;
-      });
-      console.log(this.imageUrl);
-      const url="127.0.0.1:5050/"+this.imageUrl;
-      console.log(url);
-    }
-
-
-
-
-
-
-
-    hideServiceDetails() {
-      this.selectedService = null;
-    }
-
-
-
 
 
     searchServices() {

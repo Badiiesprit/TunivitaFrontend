@@ -62,7 +62,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'service',
+    path: 'admin/service',
     component: DefaultLayoutComponent,
     data: {
       title: 'Service'
@@ -76,7 +76,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'post',
+    path: 'admin/post',
     component: DefaultLayoutComponent,
     data: {
       title: 'Post'
@@ -90,7 +90,21 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'comment',
+    path: 'admin/offer',
+    component: DefaultLayoutComponent,
+    data: {
+      title: 'Offer'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./admin/offer/offer.module').then((m) => m.OfferModule)
+      },
+    ]
+  },
+  {
+    path: 'admin/comment',
     component: DefaultLayoutComponent,
     data: {
       title: 'Comment'
@@ -119,7 +133,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'service-cx',
+    path: 'client/service-cx',
     component: DefaultLayoutCxComponent,
     data: {
       title: 'ServiceCx'

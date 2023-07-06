@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ListeServiceComponent } from './liste-service/liste-service.component';
-import { FormServiceComponent } from './form-service/form-service.component';
+import { ListeOfferComponent } from './liste-offer/liste-offer.component';
+import { FormOfferComponent } from './form-offer/form-offer.component';
 import { ShowComponent } from './show/show.component';
 
 
@@ -20,21 +20,21 @@ const routes: Routes = [
       },
       {
         path: 'lister',
-        component: ListeServiceComponent,
+        component: ListeOfferComponent,
         data: {
           title: 'Lister Services',
         },
       },
       {
         path: 'form',
-        component: FormServiceComponent,
+        component: FormOfferComponent,
         data: {
           title: 'form Services',
         },
       },
       {
         path: 'update/:id',
-        component: FormServiceComponent,
+        component: FormOfferComponent,
         data: {
           title: 'update Services',
         },
@@ -54,4 +54,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ServiceRoutingModule {}
+export class OfferRoutingModule {}

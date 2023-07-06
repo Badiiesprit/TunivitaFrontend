@@ -9,4 +9,6 @@ export class Service{
   location:String;
   disable:boolean;
   qrCode:String;
+  createdAt:string;
+  updatedAt:string;
   }
