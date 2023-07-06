@@ -1,0 +1,105 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Form Category</strong>
+        </c-card-header>
+        <c-card-body>
+          <form class="row" (submit)="submitForm()" #f="ngForm">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="title">Title</label>
+                <!-- [(ngModel)]="category.title"  -->
+                <input type="text" class="form-control" id="title" name="title" required minlength="3"
+                  [(ngModel)]="thiscategory.title"
+                    placeholder="Title"  #ct="ngModel">
+                  <div class="text-danger text-capitalize"
+                    *ngIf="ct.invalid && ct.touched">
+                    <div *ngIf="ct.hasError('required')">
+                      this field is required
+                    </div>
+                    <div  *ngIf="ct.hasError('minlength')">
+                      minlength >= 3!
+                    </div>
+                  </div>
+                  <small id="titleHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="thiscategoryparent">Category parent</label>
+                <select class="form-control" id="thiscategoryparent" name="parent"
+                [(ngModel)]="thiscategory.parent" #cp="ngModel"
+                >
+                  <option *ngFor="let parent of category_parent" value="{{ parent._id }}">{{ parent.title }}</option>
+                </select>
+                <div class="text-danger text-capitalize"
+                  *ngIf="cp.invalid && cp.touched">
+                  <div *ngIf="cp.hasError('required')">
+                    this field is required
+                  </div>
+                </div>
+                <small id="parentHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" required minlength="100"
+                [(ngModel)]="thiscategory.description"
+                rows="3" #cd="ngModel"></textarea>
+                
+                <div class="text-danger text-capitalize"
+                  *ngIf="cd.invalid && cd.touched">
+                  <div *ngIf="cd.hasError('required')">
+                    This field is required
+                  </div>
+                  <div  *ngIf="cd.hasError('minlength')">
+                    Minlength >= 100!
+                  </div>
+                </div>
+                <small id="descriptionHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="categoryimage" class="d-block w-100">Category image</label>
+                <div class="category-image">
+                  <input type="file" class="form-control-file" id="categoryimage" (change)="onFileSelected($event)">
+                </div>
+                <small id="imageHelp" class="form-text text-muted d-block w-100">We'll never share your email with anyone else.</small>
+              </div>
+            </div>
+            <div class="col-md-12 btn-submit-reset">
+              <div *ngIf="loading; else contentLoaded">
+                <button cButton class="m-1 success" disabled>
+                  <c-spinner aria-hidden="true" size="sm"></c-spinner>
+                  Loading... 
+                </button>
+              </div>
+              <ng-template #contentLoaded>
+                <button cButton color="info" shape="rounded-pill" type="submit" style="margin-left: 10px;" [disabled]="f.invalid">Submit</button>
+                <button type="reset" cButton color="secondary" shape="rounded-pill">Reset</button>
+              </ng-template>
+            </div>
+          </form>
+          <br/>
+          <div *ngIf="messageIsUnread;">
+            <c-alert color="success" class="d-flex align-items-center">
+              <span>✔</span>
+              <div>{{messageText}}</div>
+            </c-alert>
+          </div>
+          
+          <div *ngIf="messageIsError;">
+            <c-alert color="danger" class="d-flex align-items-center">
+              <span>✖</span>
+              <div>{{messageText}}</div>
+            </c-alert>
+          </div>
+
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+  

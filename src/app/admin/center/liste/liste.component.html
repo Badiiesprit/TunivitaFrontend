@@ -1,0 +1,54 @@
+
+
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+        <c-card class="mb-4">
+            <c-card-header>
+            <strong>Liste Category</strong>
+            </c-card-header>
+            <c-card-body>
+                <table datatable class="table table-hover "  id="myTable">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">N° Vus</th>
+                        <th scope="col" class="no-sort text-center">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let center of centers; let i = index" [class.disable]="center.disable">
+                            <td scope="col">{{ i + 1 }}</td>
+                            <td scope="col">{{ center.title }}</td>
+                            <td scope="col">{{ center.phone }}</td>
+                            <td scope="col">{{ center.email }}</td>
+                            <td scope="col">{{ center.nbVus }} Vus</td>
+                            <td scope="col" class="text-center">
+                              <a [routerLink]="['/admin/center/show', center._id]" class="btn" cTooltip="Show">
+                                  <svg [cIcon]="icons.cilFindInPage" width="25" title="Shield Icon"></svg>
+                              </a>
+                              <a [routerLink]="['/admin/center/update', center._id]" class="btn" cTooltip="Update">
+                                  <svg [cIcon]="icons.cilPencil" width="25" title="Shield Icon"></svg>
+                              </a>
+                              <a (click)="deleteCenter(center._id)" class="btn" cTooltip="Archive">
+                                  <svg [cIcon]="icons.cilTrash" width="25" title="Shield Icon"></svg>
+                              </a>
+                              <span *ngIf="center.disable else badgeactiver">
+                                <c-badge color="danger" style="transform: rotate(-15deg);">Archived</c-badge>
+                                </span>
+                                <ng-template #badgeactiver>
+                                    <span>
+                                        <c-badge color="success" style="transform: rotate(-15deg);">Activated</c-badge>
+                                    </span>
+                                </ng-template>
+                          </td>
+
+                        </tr>
+                    </tbody>
+                  </table>
+            </c-card-body>
+        </c-card>
+    </c-col>
+</c-row>

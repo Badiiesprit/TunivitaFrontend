@@ -1,0 +1,73 @@
+
+<c-col xs>
+  <c-card class="mb-4">
+    <c-card-header style="display: flex; justify-content: space-between; align-items: center;">
+      <span>Services</span>
+      <button [routerLink]="['service/form']" style="background: none; border: none;">
+        <i class="fa-solid fa-plus circular-button"></i>
+      </button>
+    </c-card-header>
+    <c-card-body>
+      <div class="table-container">
+        <table datatable class="table table-hover " id="myTable" [attr.hover]="true" [attr.responsive]="true" [attr.striped]="true" align="middle" cTable>
+          <thead cTableColor="light">
+            <tr>
+              <th scope="col">Post Title</th>
+              <th scope="col">Short Description</th>
+              <th scope="col" class="no-sort"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let post of list; index as i">
+              <td>{{ post.title }}</td>
+              <td class="description-cell">{{ post.short_description }}</td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  <button (mouseover)="showServiceDetails(post)" (mouseout)="hideServiceDetails()" style="background: none; border: none;">
+                    <i class="fa-solid fa-eye delete-icon"></i>
+                  </button>
+                  &nbsp;
+                  <button (click)="deleteService(post)" style="background: none; border: none;">
+                    <i class="fas fa-times delete-icon"></i>
+                  </button>
+                  &nbsp;
+                  <button [routerLink]="['/post/update', post._id]" style="background: none; border: none;">
+                    <i class="fa-solid fa-pen delete-icon"></i>
+                  </button>
+                  &nbsp;
+                  &nbsp;
+                  <div class="form-check form-switch ml-2">
+                    <input class="form-check-input" type="checkbox" role="switch" (change)="toggleService(post)" [(ngModel)]="post.disable" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault" [ngClass]="{ 'switch-enabled': post.disable, 'switch-disabled': !post.disable }"></label>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <c-card class="mb-4">
+        <div class="service-details">
+          <div *ngIf="selectedPost" class="service-details">
+            <div class="image-container">
+              <img alt="Service Image" class="image-container" src="{{ baseurl }}{{ imageUrl }}">
+            </div>
+            <div class="info-container">
+              <div class="info-item">
+                <p class="info-label">Post Name:</p>
+                <p class="info-value">{{ selectedPost.title }}</p>
+
+              </div>
+              <div class="info-item">
+                <p class="info-label">Post Description:</p>
+                <p class="info-value">{{ selectedPost.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </c-card>
+    </c-card-body>
+  </c-card>
+</c-col>
+
+

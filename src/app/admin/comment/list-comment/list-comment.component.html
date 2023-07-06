@@ -1,0 +1,62 @@
+
+<c-col xs>
+  <c-card class="mb-4">
+    <c-card-header style="display: flex; justify-content: space-between; align-items: center;">
+      <span>Services</span>
+      <button [routerLink]="['service/form']" style="background: none; border: none;">
+        <i class="fa-solid fa-plus circular-button"></i>
+      </button>
+    </c-card-header>
+    <c-card-body>
+      <div class="table-container">
+        <table datatable class="table table-striped" id="myTable" [attr.hover]="true" [attr.responsive]="true" [attr.striped]="true" align="middle" cTable>
+          <thead cTableColor="light">
+            <tr>
+              <th scope="col">user name</th>
+              <th scope="col">Commentaire</th>
+              <th scope="col" class="no-sort"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let com of list; index as i">
+              <td>{{ com.user.name }}</td>
+              <td class="description-cell">{{ com.text }}</td>
+              <td>
+                <div class="d-flex justify-content-end">
+                  <button (mouseover)="showServiceDetails(com)" (mouseout)="hideServiceDetails()" style="background: none; border: none;">
+                    <i class="fa-solid fa-eye delete-icon"></i>
+                  </button>
+                  &nbsp;
+                  <button (click)="deleteService(com)" style="background: none; border: none;">
+                    <i class="fas fa-times delete-icon"></i>
+                  </button>
+                  &nbsp;
+                  &nbsp;
+                  <div class="form-check form-switch ml-2">
+                    <input class="form-check-input" type="checkbox" role="switch" (change)="toggleService(com)" [(ngModel)]="com.disable" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault" [ngClass]="{ 'switch-enabled': com.disable, 'switch-disabled': !com.disable }"></label>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <c-card class="mb-4">
+        <div class="service-details">
+          <div *ngIf="selectedComment" class="service-details">
+            <div class="info-container">
+              <div class="info-item">
+                <p class="info-label">Post Name:</p>
+                <p class="info-value">{{ selectedComment.text }}</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </c-card>
+    </c-card-body>
+  </c-card>
+</c-col>
+
+

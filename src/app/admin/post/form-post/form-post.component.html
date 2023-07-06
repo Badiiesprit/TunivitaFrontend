@@ -1,0 +1,48 @@
+
+<c-col xs>
+  <c-card class="mb-5">
+    <c-card-header style="display: flex; justify-content: space-between; align-items: center;">
+      <span>Formulaire Posts</span>
+    </c-card-header>
+    <c-card-body>
+
+      <div class="container">
+  <form #f="ngForm" class="col-md-8 mx-auto">
+    <div class="form-row">
+      <label for="name">Post Title:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter the service name" [(ngModel)]="post.title" name="name" required minlength="3" pattern="[a-zA-Z ]+$" #pn="ngModel">
+      <div class="alert alert-danger" *ngIf="pn.invalid && pn.touched">
+        <div *ngIf="pn.hasError('required')"> This field is required  </div>
+        <div *ngIf="pn.hasError('minlength')"> longer than 3 caracters</div>
+        <div *ngIf="pn.hasError('pattern')"> please fill in only caracters</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Short Description:</label>
+      <textarea class="form-control" id="description" rows="3" placeholder="Enter the service description" [(ngModel)]="post.short_description" name="description" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea class="form-control" id="description" rows="3" placeholder="Enter the service description" [(ngModel)]="post.description" name="description" required></textarea>
+    </div>
+
+
+    <div class="form-group">
+      <label for="image">Image:</label>
+      <input type="file" class="form-control" id="image" (change)="onFileSelected($event)" name="image">
+    </div>
+
+
+
+    <div class="d-flex justify-content-end ">
+      <button type="submit" class="btn" (click)="save()" [disabled]="f.invalid"> {{ action }} </button>
+      &nbsp;
+      <button class="btn btn-info"> Reset </button>
+    </div>
+  </form>
+</div>
+</c-card-body>
+</c-card>
+</c-col>

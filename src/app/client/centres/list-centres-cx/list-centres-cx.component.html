@@ -1,0 +1,14 @@
+<div class="row">
+    <div *ngFor="let center of centers " class="col-md-3 mb-1">
+      <div class="card" style="width: 18rem;" >
+  
+        <img src="{{baseurl}}{{center.pathimage}}" class="card-img-top" alt="..." width="200px" height="300px">
+        <div class="card-body">
+          <h5 class="card-title">{{center.title | slice:0:20 }}...</h5>
+          <p class="card-text">Description: {{center.description | slice:0:100 }}... </p>
+          <p class="card-text">Location {{center.location | slice:0:20 }}... </p>
+          <a class="btn btn-sm btn-primary BtnBuy" [routerLink]="['/centers/show', center._id]" > Voir + </a> 
+        </div>
+      </div>
+    </div>
+  </div>

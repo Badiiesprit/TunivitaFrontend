@@ -1,0 +1,32 @@
+
+
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+        <c-card class="mb-4">
+            <c-card-header>
+            <strong>Show Category</strong>
+            </c-card-header>
+            <c-card-body>
+              <c-card>
+                  <img cCardImg="top" class="imageShow" src="{{baseurl}}{{image?.path}}">
+                  <c-card-body>
+                    <h6 cCardTitle>Parent : {{category.parent?.title || "Home"}}</h6>
+                    <h5 cCardTitle>Title : {{category.title}}</h5>
+                    <p cCardText>
+                      Description : {{category.description}}
+                    </p>
+                    <p cCardText>
+                      <b>Created At :</b> {{category.createdAt}}
+                    </p>
+                    <p cCardText>
+                      <b>Updated At :</b> {{category.updatedAt}}
+                    </p>
+                    <a [routerLink]="['/admin/category/update', category._id]" cButton color="light"  cTooltip="Update">
+                      Update
+                    </a>
+                  </c-card-body>
+                </c-card>
+            </c-card-body>
+        </c-card>
+    </c-col>
+</c-row>

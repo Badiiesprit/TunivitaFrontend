@@ -1,0 +1,7 @@
+.container {
+  position: relative; /* Définit la position relative pour que l'ombre soit relative au conteneur */
+}
+
+.table {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Ajoute une ombre à l'arrière-plan du tableau */
+}

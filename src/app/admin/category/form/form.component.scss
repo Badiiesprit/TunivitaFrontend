@@ -1,0 +1,18 @@
+.category-image {
+    width: 100%;
+    border: 1px solid var(--cui-input-border-color, #b1b7c1);
+    border-radius: 5px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-group {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.btn-submit-reset{
+    display: flex;
+    justify-content: flex-start;
+    direction: rtl;
+}

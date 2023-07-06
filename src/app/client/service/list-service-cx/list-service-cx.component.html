@@ -1,0 +1,46 @@
+<form class="d-flex" role="search">
+<div class="search-container">
+    <input class="form-control me-2" type="search" name="search" placeholder="Search..."
+      [(ngModel)]="motcle" (input)="search()">
+    </div>
+
+      <div class="sort-container">
+        <button class="sort-button" (click)="sortServicesByDate()">
+          <span class="sort-icon" [class.asc]="sortOrder === 'asc'" [class.desc]="sortOrder === 'desc'"></span>
+          <i class="fas fa-arrow-{{sort_direction}}-wide-short"></i>
+          <!-- <i class="fa-solid fa-arrow-up-wide-short"></i> -->        </button>
+      </div>
+  </form>
+
+<div class="card-container">
+  <div class="card-wrapper">
+  <div *ngFor="let service of filteredServices | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage"
+    class="card" style="width: 18rem;">
+    <div class="image-container">
+      <img [src]="baseurl + service.image.path" class="card-img-top" alt="..." width="200px" height="300px">
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">{{ service.name }}</h5>
+      <p class="card-text limited-description">{{ service.description }}</p>
+      <p class="card-text"> <i class="fas fa-map-marker-alt"></i> {{ service.location }}</p>
+      <div class="plus">
+        <p class="card-text"> <i class="fas fa-calendar-alt"></i> {{ service.date | date:'yyyy-MM-dd'  }} </p>
+        <button >Voir plus</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="pagination">
+  <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="currentPage = 1">First</button>
+  <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="currentPage = currentPage - 1">Previous</button>
+  <div class="pagination-number" *ngFor="let page of getPageNumbers()" [class.active]="currentPage === page" (click)="currentPage = page">
+    {{ page }}
+  </div>
+  <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="currentPage = currentPage + 1">Next</button>
+  <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="currentPage = totalPages">Last</button>
+</div>
+
+

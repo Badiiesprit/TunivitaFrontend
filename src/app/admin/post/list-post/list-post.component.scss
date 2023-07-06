@@ -1,0 +1,86 @@
+:host {
+  .legend {
+    small {
+      font-size: x-small;
+    }
+  }
+}
+
+
+.delete-icon:hover {
+  color: rgb(112, 157, 209);
+}
+
+.delete-icon:active {
+  color: rgb(84, 189, 250);
+}
+
+.delete-icon {
+  color: black;
+  width: 10px; height: 10px;
+  transition: background-color 0.3s
+  ;
+}
+.circular-button {
+  background-color: #052c65;
+  color: white;
+
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.circular-button:hover {
+  background-color:  rgb(112, 157, 209);
+
+}
+
+
+.description-cell {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.table-container {
+  position: relative;
+}
+
+.service-details {
+  display: flex;
+
+}
+
+button:hover + .service-details,
+.service-details:hover {
+  display: block;
+}
+
+.image-container {
+  margin-right: 20px;
+  width: 300px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;}
+
+  .info-item {
+    margin-bottom: 1px;
+  }
+
+  .info-label {
+    font-weight: bold;
+  }
+
+  .info-value {
+    margin-top: 0px;
+  }

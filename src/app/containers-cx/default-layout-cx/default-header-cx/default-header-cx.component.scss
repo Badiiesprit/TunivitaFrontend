@@ -1,0 +1,110 @@
+
+.my-navbar {
+  background-color:#004AAD;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 30px;
+}
+
+.logo {
+  max-width: 200px;
+  height: auto;
+}
+.navbar-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.container-fluid{
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.my-navbar .navbar-nav .nav-link {
+  color: #BDD1F9;
+  position: relative;
+  text-decoration: none;
+  display: inline;
+
+}
+
+
+.my-navbar .navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #BDD1F9;
+  visibility: hidden;
+  transition: width 0.3s ease-in-out;
+}
+
+.my-navbar .navbar-nav .nav-link:hover::after,
+.my-navbar .navbar-nav .nav-link:focus::after {
+  visibility: visible;
+  width: 100%;
+}
+
+
+
+
+.my-navbar .navbar-nav .nav-link:hover {
+  color: #BDD1F9;
+  font-weight: bolder;
+
+}
+
+.my-navbar .btn-outline-success {
+  color: #BDD1F9;
+  border-color: #BDD1F9;
+}
+
+.my-navbar .btn-outline-success:hover,
+.my-navbar .btn-outline-success:focus {
+  color:black;
+  background-color: #BDD1F9;
+}
+.my-navbar .navbar-brand {
+  margin-right: 20px;
+}
+
+.my-navbar .navbar-nav {
+  margin-left: 50px;
+}
+
+.login-button {
+  border-radius: 20px;
+  background-color: #BDD1F9;
+  color: #004AAD;
+  padding: 8px 16px;
+  font-size: 14px;
+  margin-right: 5px;
+  margin-left: 5px;
+  width: 100px;
+
+
+}
+
+
+.signup-button {
+  border-radius: 20px;
+  background-color: #BDD1F9;
+  color: #004AAD;
+  padding: 8px 16px;
+  font-size: 14px;
+  margin-right: 5px;
+  margin-left: 5px;
+  width: 100px;
+}
+
+.signup-button:hover{
+  background-color: #092864;
+  color: #BDD1F9;
+}
+
+.login-button:hover{
+  background-color: #092864;
+  color: #BDD1F9;
+}

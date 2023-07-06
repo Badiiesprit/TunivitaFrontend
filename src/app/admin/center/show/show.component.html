@@ -1,0 +1,61 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+        <c-card class="mb-4">
+            <c-card-header>
+            <strong>Show Center</strong>
+            </c-card-header>
+            <c-card-body>
+              <c-card>
+                  <c-carousel>
+                    <c-carousel-indicators></c-carousel-indicators>
+                    <c-carousel-inner>
+                      <c-carousel-item *ngFor="let slide of slides">
+                        <img
+                          [src]="slide.src"
+                          alt="{{ slide.title }}"
+                          class="d-block w-100"
+                          style="height: 300px; object-fit: contain;"
+                          loading="lazy" />
+                      </c-carousel-item>
+                    </c-carousel-inner>
+                    <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
+                    <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
+                  </c-carousel>
+                  <c-card-body>
+                    <h6 cCardTitle>Category : {{center.category?.title || "Home"}}</h6>
+                    <h5 cCardTitle>Title : {{center.title}}</h5>
+                    <p cCardText>
+                      Description : {{center.description}}
+                    </p>
+                    <p cCardText>
+                        <b>Location :</b> {{center.location}}
+                    </p>
+                    <p cCardText>
+                        <b>Phone :</b> {{center.phone}}
+                    </p>
+                    <p cCardText>
+                        <b>Email :</b> {{center.email}}
+                    </p>
+                    <p cCardText>
+                      <b>Created At :</b> {{center.createdAt}}
+                    </p>
+                    <p cCardText>
+                      <b>Updated At :</b> {{center.updatedAt}}
+                    </p>
+                    <div class="col-md-12">
+                      <div id="map"></div>
+                    </div>
+                    <br/>
+                    <div class="col-md-12 text-center">
+                      <a [routerLink]="['/admin/center/update', center._id]" cButton color="info"  cTooltip="Update">
+                        Update {{center.title}}
+                      </a>
+                    </div>
+                    
+
+                  </c-card-body>
+                </c-card>
+            </c-card-body>
+        </c-card>
+    </c-col>
+</c-row>
