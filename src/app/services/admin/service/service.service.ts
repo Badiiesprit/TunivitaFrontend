@@ -75,7 +75,6 @@ export class ServiceService {
 
   update(service: Service): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-
     const formData: FormData = new FormData();
 
     for (const [key, value] of Object.entries(service)) {

@@ -57,6 +57,9 @@ export class FormServiceComponent implements OnInit {
         this.route.navigate(['service/lister']);
       });
     } else if (this.action == 'Modifier') {
+       if (this.selectedFile) {
+        this.service.image = this.selectedFile;
+      }
       this.serviceService.update(this.service).subscribe(() => {
         this.route.navigate(['service/lister']);
       });
