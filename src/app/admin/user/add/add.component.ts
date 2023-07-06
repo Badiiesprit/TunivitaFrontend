@@ -36,6 +36,12 @@ export class AddComponent {
 
   submitForm() {
   if (this.user) {
+    if(this.selectedFile)
+    {
+      this.user.user_image = this.selectedFile;
+    }
+    console.log(this.user);
+
     this.userService.add(this.user).subscribe(
       (response: User) => {
         console.log(response); // Optional: Log the response from the server
@@ -49,5 +55,11 @@ export class AddComponent {
   } else {
     console.error('Invalid user object');
   }
+}
+onFileSelected(event: any) {
+  // Gérer la sélection d'un fichier
+  this.selectedFile = event.target.files[0];
+  console.log(this.selectedFile); // Afficher le fichier sélectionné dans la console (à adapter selon vos besoins)
+  // Vous pouvez envoyer le fichier au serveur ici ou effectuer d'autres actions nécessaires
 }
 }

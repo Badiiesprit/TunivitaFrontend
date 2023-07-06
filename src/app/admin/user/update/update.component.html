@@ -151,6 +151,11 @@
                 />
               </div>
 
+              <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" class="form-control" id="image" name="image" (change)="onFileSelected($event)">
+              </div>
+
               <br />
               <div class="d-grid">
                 <button type="submit" cButton color="success">

@@ -12,6 +12,8 @@ import { User } from 'src/app/model/user';
 })
 export class UpdateComponent implements OnInit{
   public user: User;
+  public selectedFile: File | null = null;
+
   constructor(private route: ActivatedRoute,private router: Router, private userService: UserService) {}
 ngOnInit() {
   this.route.params.subscribe(params => {
@@ -35,6 +37,10 @@ submitForm() {
   this.route.params.subscribe(params =>{
     const userId = params['id'];
     if (this.user && userId) {
+      if(this.selectedFile)
+      {
+        this.user.user_image = this.selectedFile;
+      }
       this.userService.update(userId, this.user).subscribe(
         () => {
           console.log(this.user);
@@ -52,6 +58,13 @@ submitForm() {
 
   })
 
+}
+
+onFileSelected(event: any) {
+  // Gérer la sélection d'un fichier
+  this.selectedFile = event.target.files[0];
+  console.log(this.selectedFile); // Afficher le fichier sélectionné dans la console (à adapter selon vos besoins)
+  // Vous pouvez envoyer le fichier au serveur ici ou effectuer d'autres actions nécessaires
 }
 
 }
