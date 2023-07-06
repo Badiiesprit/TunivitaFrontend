@@ -17,7 +17,7 @@ export class ShowComponent {
   public center:Center;
   public baseurl = environment.url;
   public image:any[];
-  public slides: any[] = new Array(3).fill({id: -1, src: '', title: '', subtitle: ''});
+  public slides: any[] = new Array(0);
 
   constructor(private route:ActivatedRoute ,private centerService: CenterService) {
   }
