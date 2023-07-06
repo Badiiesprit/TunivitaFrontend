@@ -39,7 +39,7 @@ submitForm() {
     if (this.user && userId) {
       if(this.selectedFile)
       {
-        this.user.user_image = this.selectedFile;
+        this.user.image = this.selectedFile;
       }
       this.userService.update(userId, this.user).subscribe(
         () => {

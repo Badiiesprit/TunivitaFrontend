@@ -1,3 +1,5 @@
+import { Image } from "./image";
+
 export class User
 {
   _id:String;
@@ -7,7 +9,7 @@ export class User
   phone:String;
   email:String;
   password:String;
-  user_image:Object;
+  image:Object;
   date_birth:Date;
   address:String;
   state:String;
