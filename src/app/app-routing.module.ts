@@ -28,7 +28,21 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('./client/service/servicecx.module').then((m) => m.ServiceCxModule)
+          import('./client/home/home.module').then((m) => m.HomeModule)
+      }
+    ]
+  },
+  {
+    path: 'centers',
+    component: DefaultLayoutCxComponent,
+    data: {
+      title: 'Centers'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./client/centres/centres.module').then((m) => m.CentresModule)
       }
     ]
   },
