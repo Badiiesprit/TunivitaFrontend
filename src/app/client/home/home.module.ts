@@ -16,6 +16,7 @@ import {
   AlertModule,
   TooltipModule,
   CarouselModule,
+  CarouselItemComponent,
   BadgeModule
 } from '@coreui/angular';
 
