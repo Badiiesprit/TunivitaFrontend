@@ -28,7 +28,21 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('./client/service/servicecx.module').then((m) => m.ServiceCxModule)
+          import('./client/home/home.module').then((m) => m.HomeModule)
+      }
+    ]
+  },
+  {
+    path: 'centers',
+    component: DefaultLayoutCxComponent,
+    data: {
+      title: 'Centers'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./client/centres/centres.module').then((m) => m.CentresModule)
       }
     ]
   },
@@ -62,7 +76,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'service',
+    path: 'admin/service',
     component: DefaultLayoutComponent,
     data: {
       title: 'Service'
@@ -76,7 +90,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'post',
+    path: 'admin/post',
     component: DefaultLayoutComponent,
     data: {
       title: 'Post'
@@ -90,7 +104,21 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'comment',
+    path: 'admin/offer',
+    component: DefaultLayoutComponent,
+    data: {
+      title: 'Offer'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./admin/offer/offer.module').then((m) => m.OfferModule)
+      },
+    ]
+  },
+  {
+    path: 'admin/comment',
     component: DefaultLayoutComponent,
     data: {
       title: 'Comment'
@@ -119,7 +147,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'service-cx',
+    path: 'client/service-cx',
     component: DefaultLayoutCxComponent,
     data: {
       title: 'ServiceCx'

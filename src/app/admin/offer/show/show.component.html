@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card-header text-center">
+        <strong>Offre</strong>
+      </div>
+      <div class="card-body">
+        <div class="card inside">
+          <h6 class="card-title text-center">{{offer.name}}</h6>
+          <div class="row justify-content-center"> <!-- Add justify-content-center class to center the row -->
+            <div class="col-md-12 text-center"> <!-- Add text-center class to center the content -->
+              <div class="image-container">
+                <img src="{{baseurl}}{{image.path}}" alt="Image description">
+              </div>
+            </div>
+              <div class="col-md-12">
+                <p class="card-text">
+                  <span class="label">Description:</span><br>
+                  {{offer.description}}
+                </p>
+              </div>
+              <div class="col-md-12">
+                <p class="card-text">
+                  <span class="label">Centre Localisation:</span><br>
+                  {{offer.center.location}}
+                </p>
+              </div>
+              <div class="col-md-12">
+                <p class="card-text">
+                  <span class="label">Télephone:</span><br>
+                  {{offer.center.phone}}
+                </p>
+              </div>
+              <div class="col-md-12">
+                <p class="card-text">
+                  <span class="label">Email:</span><br>
+                  {{offer.center.email}}
+                </p>
+              </div>
+              <div class="col-md-12">
+                <p class="card-text">
+                  <span class="label">Created At:</span><br>
+                  {{offer.createdAt}}
+                </p>
+              </div>
+              <div class="col-md-12">
+                <p class="card-text">
+                  <span class="label">Updated At:</span><br>
+                  {{offer.updatedAt}}
+                </p>
+              </div>
+            </div>
+            <div class="text-center">
+              <div id="map"></div>
+            </div>
+            <br/>
+            <div class="text-center">
+              <a [routerLink]="['/admin/offer/update', offer._id]" class="btn btn-info" data-toggle="tooltip" title="Update">
+                Update {{offer.name}}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -4,12 +4,10 @@ import { NgModule } from '@angular/core';
 import { CardModule, GridModule, NavModule, UtilitiesModule, TabsModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 
-import { CentresRoutingModule } from './centres-routing.module';
-
+import { ListeOfferComponent } from './liste-offer/liste-offer.component';
+import { FormOfferComponent } from './form-offer/form-offer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { ShowComponent } from './show/show.component';
 
 import {
   ButtonGroupModule,
@@ -18,19 +16,21 @@ import {
   FormModule,
   ListGroupModule,
   SharedModule,
+  CarouselModule,
+  SpinnerModule,
+  AlertModule,
+  TooltipModule,
+  BadgeModule
+
 } from '@coreui/angular';
 
-import { ListCentresCxComponent } from './list-centres-cx/list-centres-cx.component';
-
+// Theme Routing
+import { OfferRoutingModule } from './offer-routing.module';
 
 @NgModule({
-  declarations: [
-    ListCentresCxComponent
-  ],
   imports: [
     CommonModule,
-    CentresRoutingModule,
-    CommonModule,
+    OfferRoutingModule,
     CardModule,
     GridModule,
     UtilitiesModule,
@@ -45,9 +45,18 @@ import { ListCentresCxComponent } from './list-centres-cx/list-centres-cx.compon
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    MatGridListModule,
-    MatCardModule,
-    NgxPaginationModule,
+    CarouselModule,
+    SpinnerModule,
+    AlertModule,
+    TooltipModule,
+    BadgeModule
+  ],
+  declarations: [
+  ListeOfferComponent,
+  FormOfferComponent,
+  ShowComponent
+
   ]
 })
-export class CentresModule { }
+export class OfferModule {
+}

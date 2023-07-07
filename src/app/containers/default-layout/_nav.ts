@@ -54,18 +54,37 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Service',
-    url: '/service',
+    url: '/admin/service',
     iconComponent: { name: 'cil-drop' },
 
     children: [
       {
         name: 'Liste Services',
-        url: '/service/lister',
+        url: '/admin/service/lister',
 
       },
       {
         name: 'Formulaire',
-        url: '/service/form',
+        url: '/admin/service/form',
+
+      },
+
+    ],
+  },
+  {
+    name: 'Offer',
+    url: '/admin/offer',
+    iconComponent: { name: 'cil-drop' },
+
+    children: [
+      {
+        name: 'Liste offres',
+        url: '/admin/offer/lister',
+
+      },
+      {
+        name: 'Formulaire',
+        url: '/admin/offer/form',
 
       },
 
@@ -73,18 +92,18 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Post',
-    url: '/post',
+    url: '/admin/post',
     iconComponent: { name: 'cil-drop' },
 
     children: [
       {
         name: 'Liste Posts',
-        url: '/post/lister',
+        url: '/admin/post/lister',
 
       },
       {
         name: 'Formulaire',
-        url: '/post/form',
+        url: '/admin/post/form',
 
       },
 
@@ -93,7 +112,7 @@ export const navItems: INavData[] = [
 
   {
     name: 'Comment',
-    url: '/comment/lister',
+    url: '/admin/comment/lister',
     iconComponent: { name: 'cil-drop' },
   },
 

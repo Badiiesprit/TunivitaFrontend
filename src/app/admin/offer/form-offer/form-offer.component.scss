@@ -1,0 +1,56 @@
+:host {
+  #exampleColorInput {
+    min-width: 2.5rem;
+  }
+  .color-box {
+    min-width: 2rem;
+    min-height: 2rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.btn-submit-reset{
+  display: flex;
+  justify-content: flex-start;
+  direction: rtl;
+}
+
+.btn:hover {
+  background-color: rgb(112, 157, 209);
+}
+
+.btn:active {
+  color: rgb(84, 189, 250);
+}
+.btn {
+  color: white;
+  background-color: #052c65;
+  transition: background-color 0.3s
+  ;
+}
+
+
+// .btn {
+//   background-color: #052c65;
+//   color: white;
+//   border: none;
+//   border-radius: 50%;
+//   width: 30px;
+//   height: 30px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   cursor: pointer;
+//   transition: background-color 0.3s;
+// }
+
+
+
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+

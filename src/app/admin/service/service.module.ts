@@ -7,6 +7,7 @@ import { IconModule } from '@coreui/icons-angular';
 import { ListeServiceComponent } from './liste-service/liste-service.component';
 import { FormServiceComponent } from './form-service/form-service.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShowComponent } from './show/show.component';
 
 import {
   ButtonGroupModule,
@@ -14,7 +15,13 @@ import {
   DropdownModule,
   FormModule,
   ListGroupModule,
-  SharedModule
+  SharedModule,
+  CarouselModule,
+  SpinnerModule,
+  AlertModule,
+  TooltipModule,
+  BadgeModule
+
 } from '@coreui/angular';
 
 // Theme Routing
@@ -37,11 +44,18 @@ import { ServiceRoutingModule } from './service-routing.module';
     ListGroupModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CarouselModule,
+    SpinnerModule,
+    AlertModule,
+    TooltipModule,
+    BadgeModule
   ],
   declarations: [
   ListeServiceComponent,
-  FormServiceComponent
+  FormServiceComponent,
+  ShowComponent
+
   ]
 })
 export class ServiceModule {

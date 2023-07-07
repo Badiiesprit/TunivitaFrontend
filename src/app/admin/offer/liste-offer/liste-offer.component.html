@@ -3,8 +3,8 @@
 <c-col xs>
   <c-card class="mb-4">
     <c-card-header style="display: flex; justify-content: space-between; align-items: center;">
-      <span>Services</span>
-      <button routerLink="admin/service/form"  style="background: none; border: none;">
+      <span>Offers</span>
+      <button routerLink="admin/offer/form"  style="background: none; border: none;">
         <i class="fa-solid fa-plus circular-button"></i>
       </button>
     </c-card-header>
@@ -13,37 +13,37 @@
         <table datatable class="table table-striped" id="myTable" [attr.hover]="true" [attr.responsive]="true" [attr.striped]="true" align="middle" cTable>
           <thead cTableColor="light">
             <tr>
-              <th scope="col">Service Name</th>
+              <th scope="col">Offer Name</th>
               <th scope="col">Description</th>
-              <th scope="col">Location</th>
-              <th scope="col">Date</th>
+              <th scope="col">Centre</th>
+              <th scope="col">Localisation</th>
               <th scope="col" class="no-sort"></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let service of list; index as i">
-              <td>{{ service.name }}</td>
-              <td class="description-cell">{{ service.description }}</td>
-              <td>{{ service.location }}</td>
-              <td>{{ service.date | date:'yyyy-MM-dd' }}</td>
+            <tr *ngFor="let offer of list; index as i">
+              <td>{{ offer.name }}</td>
+              <td class="description-cell">{{ offer.description }}</td>
+              <td>{{ offer.center.title }}</td>
+              <td class="description-cell">{{ offer.center.location }}</td>
               <td>
                 <div class="d-flex justify-content-end">
-                  <button [routerLink]="['/admin/service/show', service._id]"  style="background: none; border: none;">
+                  <button [routerLink]="['/admin/offer/show', offer._id]"  style="background: none; border: none;">
                     <i class="fa-solid fa-eye delete-icon"></i>
                   </button>
                   &nbsp;
-                  <button (click)="deleteService(service)" style="background: none; border: none;">
+                  <button (click)="deleteService(offer)" style="background: none; border: none;">
                     <i class="fas fa-times delete-icon"></i>
                   </button>
                   &nbsp;
-                  <button [routerLink]="['/admin/service/update', service._id]" style="background: none; border: none;">
+                  <button [routerLink]="['/admin/offer/update', offer._id]" style="background: none; border: none;">
                     <i class="fa-solid fa-pen delete-icon"></i>
                   </button>
                   &nbsp;
                   &nbsp;
                   <div class="form-check form-switch ml-2">
-                    <input class="form-check-input" type="checkbox" role="switch" (change)="toggleService(service)" [(ngModel)]="service.disable" id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault" [ngClass]="{ 'switch-enabled': service.disable, 'switch-disabled': !service.disable }"></label>
+                    <input class="form-check-input" type="checkbox" role="switch" (change)="toggleService(offer)" [(ngModel)]="offer.disable" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault" [ngClass]="{ 'switch-enabled': offer.disable, 'switch-disabled': !offer.disable }"></label>
                   </div>
                 </div>
               </td>
@@ -51,6 +51,8 @@
           </tbody>
         </table>
       </div>
-
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
 
 
