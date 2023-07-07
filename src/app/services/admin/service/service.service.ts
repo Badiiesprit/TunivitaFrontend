@@ -108,4 +108,23 @@ export class ServiceService {
       })
     );
   }
+
+  rateService(serviceId: string, rating: number): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    const body = {
+      rating
+    };
+
+    return this.http.post<any>(`${this.url}rate/${serviceId}`, body, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error rating service:', error);
+        throw error;
+      })
+    );
+  }
+
+
+
+
+
 }

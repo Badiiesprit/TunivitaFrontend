@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { CardModule, GridModule, NavModule, UtilitiesModule, TabsModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
+import { ShowComponent } from './show/show.component';
 
 import { ListServiceCxComponent} from './list-service-cx/list-service-cx.component';
 
@@ -48,6 +49,7 @@ import { ServiceRoutingModule } from './servicecx-routing.module';
   ],
   declarations: [
     ListServiceCxComponent,
+    ShowComponent
   ]
 })
 export class ServiceCxModule {

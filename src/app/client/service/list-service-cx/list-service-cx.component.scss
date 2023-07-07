@@ -138,3 +138,43 @@
     border-color: none;
     padding: 5px 10px;
   }
+
+
+/* Star Rating Styles */
+.star-rating {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.star-rating .star {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+
+/* Star Rating Styles */
+.rating {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.rating .star {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.rating .star i {
+  color: #bbb;
+}
+
+.rating .star.full i {
+  color: #ffcc00;
+}
+.rating .star:hover i,
+.rating .star.selected i {
+  color: #ffcc00;
+}

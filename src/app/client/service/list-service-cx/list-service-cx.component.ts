@@ -42,6 +42,39 @@ export class ListServiceCxComponent implements OnInit {
     );
   }
 
+  rateService(serviceId: string, rating: number): void {
+    this.serviceService.rateService(serviceId, rating).subscribe(
+      (response) => {
+        // Update the service object with the new rating
+        const serviceIndex = this.services.findIndex((service) => service._id === serviceId);
+        if (serviceIndex > -1) {
+          this.services[serviceIndex].averageRating = response.averageRating;
+        }
+      },
+      (error) => {
+        console.error('Error rating service:', error);
+      }
+    );
+  }
+
+  getRatingsArray(averageRating: number): number[] {
+    const fullStars = Math.floor(averageRating);
+    const hasPartialStar = averageRating % 1 !== 0;
+
+    let ratingsArray: number[] = [];
+
+    for (let i = 1; i <= fullStars; i++) {
+      ratingsArray.push(1); // Push a value of 1 to represent a full star
+    }
+
+    if (hasPartialStar) {
+      ratingsArray.push(0.5); // Push a value of 0.5 to represent a half star
+    }
+
+    return ratingsArray;
+  }
+
+
   search(): void {
     if (this.motcle) {
       this.filteredServices = this.services.filter(service =>

@@ -13,4 +13,6 @@ export class Offer{
   averageRating: number;
   createdAt: Date;
   updatedAt: Date;
+  isFavorite:boolean;
+  favorites: string[];
 }

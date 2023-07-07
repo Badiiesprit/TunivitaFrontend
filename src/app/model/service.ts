@@ -11,4 +11,11 @@ export class Service{
   qrCode:String;
   createdAt:string;
   updatedAt:string;
-  }
+  ratedBy: RatedUser[];
+  averageRating: number;
+}
+
+export interface RatedUser {
+  userId: string;
+  rating: number;
+}

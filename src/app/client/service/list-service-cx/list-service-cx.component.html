@@ -24,9 +24,18 @@
       <h5 class="card-title">{{ service.name }}</h5>
       <p class="card-text limited-description">{{ service.description }}</p>
       <p class="card-text"> <i class="fas fa-map-marker-alt"></i> {{ service.location }}</p>
+
+      <div class="rating">
+        <span class="star" [class.full]="service.averageRating >= 1" (click)="rateService(service._id, 1)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="service.averageRating >= 2" (click)="rateService(service._id, 2)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="service.averageRating >= 3" (click)="rateService(service._id, 3)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="service.averageRating >= 4" (click)="rateService(service._id, 4)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="service.averageRating >= 5" (click)="rateService(service._id, 5)"><i class="fas fa-star"></i></span>
+      </div>
+
       <div class="plus">
         <p class="card-text"> <i class="fas fa-calendar-alt"></i> {{ service.date | date:'yyyy-MM-dd'  }} </p>
-        <button >Voir plus</button>
+        <button [routerLink]="['/client/service-cx/show', service._id]"  > Voir plus</button>
       </div>
     </div>
   </div>
