@@ -102,4 +102,19 @@ export class OfferService {
 
   }
 
+
+  rate(offerId: string, rating: number): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    const body = {
+      rating
+    };
+
+    return this.http.post<any>(`${this.url}rate/${offerId}`, body, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error rating service:', error);
+        throw error;
+      })
+    );
+  }
+
 }

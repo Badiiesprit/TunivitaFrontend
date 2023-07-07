@@ -161,6 +161,21 @@ const routes: Routes = [
 
     ]
   },
+  {
+    path: 'client/offre',
+    component: DefaultLayoutCxComponent,
+    data: {
+      title: 'Offre'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./client/offer/offer.module').then((m) => m.OffreModule)
+      },
+
+    ]
+  },
 
   {
     path: 'admin',
