@@ -33,6 +33,18 @@ export class CommentService {
         })
       );
   }
+
+  getCommentByPost(PostId:string){
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+
+    return this.http.get<Comment []>(this.url+"comments-by-post/"+PostId,{ headers })
+      .pipe(
+        catchError((error: any) => {
+          console.error('Une erreur s\'est produite lors de la récupération des commentaires:', error);
+          throw error;
+        })
+      );
+  }
   searsh(id: string): Observable<Comment> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
@@ -46,4 +58,45 @@ export class CommentService {
       })
     );
   }
+
+  addComment(formData:any){
+    return this.http.post(this.url + '/add', formData);
+  }
+
+  like(id: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+  
+    return this.http.post<any>('http://localhost:5050/posts/like/' + id, null, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error retrieving service:', error);
+        throw error;
+      })
+    );
+  }
+  
+  dislike(id: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+  
+    return this.http.post<any>('http://localhost:5050/posts/dislike/' + id, null, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error retrieving service:', error);
+        throw error;
+      })
+    );
+  }
+
+  update(comment: any): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+
+    const formData: FormData = new FormData();
+
+    
+    return this.http.post<any>(this.url + 'update/' + comment._id, comment, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error updating service:', error);
+        throw error;
+      })
+    );
+  }
+
 }
