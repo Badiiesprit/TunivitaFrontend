@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import jwt_decode from 'jwt-decode';
+import { ClassToggleService, HeaderComponent } from '@coreui/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/app/environments/environment';
 
 @Component({
   selector: 'app-default-header-cx',
@@ -6,5 +11,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./default-header-cx.component.scss']
 })
 export class DefaultHeaderCxComponent {
-
+  public newMessages = new Array(4)
+  public newTasks = new Array(5)
+  public newNotifications = new Array(5)
+  public infouser:any;
+  public baseUrl = environment.url;
+  constructor(
+    private router: Router
+    ) {
+ 
+    const token = localStorage.getItem('token');
+    if(token && token!=""){
+      // Get the role from the token using jwt-decode library
+      const decodedToken: any = jwt_decode(token);
+      this.infouser = decodedToken;
+      console.log("decodedToken");
+      console.log(decodedToken);
+    }else{
+      this.router.navigate(['/login']);
+    }
+  }
+  logout(){
+    localStorage.setItem('token',"");
+    this.router.navigate(['/login']);
+  }
 }
