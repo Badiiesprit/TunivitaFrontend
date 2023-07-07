@@ -56,6 +56,8 @@ import { ListServiceCxComponent } from './client/service/list-service-cx/list-se
 import { FormPostComponent } from './admin/post/form-post/form-post.component';
 import { ListPostComponent } from './admin/post/list-post/list-post.component';
 import { ListCommentComponent } from './admin/comment/list-comment/list-comment.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -107,7 +109,11 @@ const APP_CONTAINERS = [
     NgxPaginationModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCardModule,
+    NgxPaginationModule,
+    MatButtonModule,
+    MatIconModule
 
   ],
   providers: [
