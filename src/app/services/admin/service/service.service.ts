@@ -97,4 +97,15 @@ export class ServiceService {
     return this.http.get(url, { headers });
   }
 
+  getStatistics(startDate: string, endDate: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    const body = { startDate, endDate };
+
+    return this.http.post<any>(this.statisticsUrl, body, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error updating statistics:', error);
+        throw error;
+      })
+    );
+  }
 }

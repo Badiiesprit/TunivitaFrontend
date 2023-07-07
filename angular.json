@@ -37,20 +37,21 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/@mdi/font/css/materialdesignicons.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css",
               "node_modules/leaflet/dist/leaflet.css",
               "src/scss/styles.scss"
-
-
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
               "node_modules/datatables.net/js/jquery.dataTables.js",
               "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js",
-              "node_modules/leaflet/dist/leaflet.js"
+              "node_modules/leaflet/dist/leaflet.js",
+              "node_modules/chart.js/dist/chart.min.js"
+
 
 
             ],
@@ -118,7 +119,7 @@
               "src/assets"
             ],
             "styles": [
-
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css",
               "src/scss/styles.scss"
@@ -127,7 +128,9 @@
 
               "node_modules/jquery/dist/jquery.js",
               "node_modules/datatables.net/js/jquery.dataTables.js",
-              "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js"
+              "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js",
+              "node_modules/chart.js/dist/chart.min.js"
+
 
             ]
 

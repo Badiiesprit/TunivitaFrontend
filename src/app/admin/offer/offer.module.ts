@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { CardModule, GridModule, NavModule, UtilitiesModule, TabsModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
-
 import { ListeOfferComponent } from './liste-offer/liste-offer.component';
 import { FormOfferComponent } from './form-offer/form-offer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,7 +19,10 @@ import {
   SpinnerModule,
   AlertModule,
   TooltipModule,
-  BadgeModule
+  BadgeModule,
+
+
+
 
 } from '@coreui/angular';
 
@@ -49,7 +51,9 @@ import { OfferRoutingModule } from './offer-routing.module';
     SpinnerModule,
     AlertModule,
     TooltipModule,
-    BadgeModule
+    BadgeModule,
+
+
   ],
   declarations: [
   ListeOfferComponent,

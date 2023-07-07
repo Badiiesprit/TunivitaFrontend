@@ -1,3 +1,5 @@
+import { Image } from "./image";
+
 export class User
 {
   _id:String;

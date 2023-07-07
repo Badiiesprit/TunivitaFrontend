@@ -6,6 +6,9 @@ import { HttpClient } from '@angular/common/http';
 import { ImageService } from 'src/app/services/admin/image/image.service';
 import { Image } from 'src/app/model/image';
 import { environment } from '../../../environments/environment';
+import Chart, { ChartType } from 'chart.js/auto';
+import { formatDate } from '@angular/common';
+
 @Component({
   selector: 'app-liste-service',
   templateUrl: './liste-service.component.html',
@@ -61,23 +64,82 @@ export class ListeServiceComponent implements OnInit {
           console.error('Error fetching services:', error);
         }
       );
-      // this.getServicesPage(this.currentPage);
+      const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const day = 1;
+
+    this.startDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+    this.endDate = today.toISOString().split('T')[0];
+
+      this.serviceService.getStatistics(this.startDate, this.endDate).subscribe((data) => {
+        this.createChart(data);
+      });
     }
 
-    getStatistics(): void {
-      const startDate = '2023-07-07'; // Replace with your actual start date
-      const endDate = '2023-07-30'; // Replace with your actual end date
 
-      this.http.get<any>('http://localhost:5050/services/statistics', { params: { startDate,endDate } })
-        .subscribe(
-          response => {
-            this.statistics = response.statistics;
-          },
-          error => {
-            console.error('Error fetching statistics:', error);
+    createChart(data: any): void {
+      const labels = data.statistics.map((statistic: any) => statistic.name);
+      const clickCounts = data.statistics.map((statistic: any) => statistic.clickCount);
+      const ctx = document.getElementById('myChart') as HTMLCanvasElement;
+      const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Click Count',
+              data: clickCounts,
+              backgroundColor:  ' #BDD1F9',
+              borderWidth: 1
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: (context) => {
+                  const label = context.label || '';
+                  if (context.dataset) {
+                    const dataPoint = context.dataset.data[context.dataIndex] || 0;
+                    return `${label}: ${dataPoint}`;
+                  }
+                  return '';
+                }
+              },
+              bodyFont: {
+                size: 16
+              }
+            },
+            legend: {
+              display: false
+            }
           }
-        );
+        }
+      });
     }
+
+
+    getStatistics() {
+      const formattedStartDate = formatDate(this.startDate, 'yyyy-MM-dd', 'en-US');
+      const formattedEndDate = formatDate(this.endDate, 'yyyy-MM-dd', 'en-US');
+      if (!this.startDate || !this.endDate) {
+        // Check if both start and end dates are selected
+        return;
+      }
+      this.serviceService.getStatistics(formattedStartDate,formattedEndDate).subscribe(
+        (data) => {
+          this.createChart(data);
+        },
+        (error) => {
+          console.error('Error fetching statistics:', error);
+        }
+      );
+    }
+
+
 
 
     searchServices() {

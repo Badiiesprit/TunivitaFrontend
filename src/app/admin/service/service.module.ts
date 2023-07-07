@@ -9,6 +9,11 @@ import { FormServiceComponent } from './form-service/form-service.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShowComponent } from './show/show.component';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 import {
   ButtonGroupModule,
   ButtonModule,
@@ -49,7 +54,10 @@ import { ServiceRoutingModule } from './service-routing.module';
     SpinnerModule,
     AlertModule,
     TooltipModule,
-    BadgeModule
+    BadgeModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
   declarations: [
   ListeServiceComponent,

@@ -14,7 +14,6 @@ import { FilterPipeModule  } from 'ngx-filter-pipe';
 import { ForgotPasswordComponent } from './services/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './services/reset-password/reset-password.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
-
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
 
@@ -26,7 +25,9 @@ import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent 
 import { DefaultFooterCxComponent, DefaultHeaderCxComponent, DefaultLayoutCxComponent } from './containers-cx';
 import { FormsModule } from '@angular/forms';
 
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -104,6 +105,10 @@ const APP_CONTAINERS = [
     MatGridListModule,
     MatCardModule,
     NgxPaginationModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
+
   ],
   providers: [
     {
