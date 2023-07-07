@@ -25,9 +25,6 @@ export class DefaultHeaderCxComponent {
       // Get the role from the token using jwt-decode library
       const decodedToken: any = jwt_decode(token);
       this.infouser = decodedToken;
-      if (!decodedToken.role.includes('admin')) {
-        this.router.navigate(['/']);
-      }
       console.log("decodedToken");
       console.log(decodedToken);
     }else{
