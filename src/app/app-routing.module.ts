@@ -162,6 +162,21 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'blogs',
+    component: DefaultLayoutCxComponent,
+    data: {
+      title: 'blogs'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./client/blog/blog.module').then((m) => m.BlogModule)
+      },
+
+    ]
+  },
+  {
     path: 'client/offre',
     component: DefaultLayoutCxComponent,
     data: {
