@@ -1,23 +1,45 @@
 
 <div class="slides-carousel">
-    <c-carousel>
-        <c-carousel-indicators></c-carousel-indicators>
-        <c-carousel-inner>
-          <c-carousel-item *ngFor="let slide of slides">
-            <img
-              alt="{{slide.title}}"
-              class="d-block w-100"
-              loading="lazy"
-              src="{{slide.src}}"
-            />
-            <c-carousel-caption class="d-none d-md-block">
-              <h3>{{slide.title}}</h3>
-              <p>{{slide.subtitle}}</p>
-            </c-carousel-caption>
-          </c-carousel-item>
-        </c-carousel-inner>
-        <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
-        <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
-    </c-carousel>
+    <div class="card">
+        <p-carousel [value]="slides" [numVisible]="1" [numScroll]="1" [circular]="false" >
+            <ng-template let-slide pTemplate="item">
+                <div class="border-1 surface-border border-round text-center">
+                    <div class="">
+                        <img src="{{ slide.src }}" [alt]="slide.title" class="w-6 shadow-2" style="width: 100%;" [height]="500" />
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+</div>
+
+
+<div class="slides-carousel-center">
+    <div class="card">
+        <p-carousel [value]="slides" [numVisible]="3" [numScroll]="3" [circular]="false" >
+            <ng-template let-slide pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                    <div class="mb-3">
+                        <img src="{{ slide.src }}" [alt]="slide.title" class="w-6 shadow-2" [width]="200" [height]="200" />
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+</div>
+
+
+<div class="slides-carousel-servise">
+    <div class="card">
+        <p-carousel [value]="slides" [numVisible]="3" [numScroll]="3" [circular]="false" >
+            <ng-template let-slide pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                    <div class="mb-3">
+                        <img src="{{ slide.src }}" [alt]="slide.title" class="w-6 shadow-2" [width]="200" [height]="200" />
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
 </div>
 
