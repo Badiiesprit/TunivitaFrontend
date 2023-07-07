@@ -1,3 +1,23 @@
+
+<div class="category-center-dropdown">
+  <c-dropdown
+    *ngFor="let category of categorys; index as i"
+    placement="bottom-start"
+    variant="btn-group" class="category-parint-dropdown">
+    <button cButton>
+      {{ category.parent.title }}
+    </button>
+    <button cButton cDropdownToggle split>
+      <span class="visually-hidden">Toggle Dropdown</span>
+    </button>
+    <ul cDropdownMenu>
+      <li><button cDropdownItem  
+        *ngFor="let c of category.categorys; index as j"
+        >{{c.title}}</button></li>
+    </ul>
+  </c-dropdown>
+</div>
+
 <form class="d-flex" role="search">
   <div class="search-container">
       <input class="form-control me-2" type="search" name="search" placeholder="Search..."
@@ -16,22 +36,22 @@
   
   <div class="card-container">
     <div class="card-wrapper">
-    <div *ngFor="let center of filteredCenters | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage"
-      class="card" style="width: 18rem;">
-      <div class="image-container">
-        <img [src]="baseurl + center.image.path" class="card-img-top" alt="..." width="200px" height="300px">
-      </div>
-  
-      <div class="card-body">
-        <h5 class="card-title">{{ center.name }}</h5>
-        <p class="card-text limited-description">{{ center.description }}</p>
-        <p class="card-text"> <i class="fas fa-map-marker-alt"></i> {{ center.location }}</p>
-        <div class="plus">
-          <button >Voir plus</button>
+      <div *ngFor="let center of filteredCenters | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage"
+        class="card" style="width: 18rem;">
+        <div class="image-container">
+          <img [src]="baseurl + center.image[0].path" class="card-img-top" alt="..." width="200px" height="300px">
+        </div>
+    
+        <div class="card-body">
+          <h5 class="card-title">{{ center.name }}</h5>
+          <p class="card-text limited-description">{{ center.description }}</p>
+          <p class="card-text"> <i class="fas fa-map-marker-alt"></i> {{ center.location }}</p>
+          <div class="plus">
+            <a [routerLink]="['/centers/show', center._id]"  class="button" >Voir plus</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
   
   <div class="pagination">

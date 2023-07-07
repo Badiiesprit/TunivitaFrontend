@@ -124,18 +124,27 @@
       margin-right: 70px;
       margin-bottom: 0;/* Add some spacing between the date and the button */
     }
-    .plus button {
+    .plus .button {
       margin-right: auto;
       background-color: #fff; /* Add some spacing between the date and the button */
       color: #004AAD;
       border: none;
+      text-decoration: none;
     }
-    .plus button:hover {
+    .plus .button:hover {
       margin-right: auto;
       background-color: #004AAD; /* Add some spacing between the date and the button */
       color: #fff;
       border-radius: 50px;
       border-color: none;
       padding: 5px 10px;
+      text-decoration: none;
     }
   
+    .category-center-dropdown{
+      text-align: center;
+      width: 100%;
+    }
+    .category-parint-dropdown{
+      margin: 5px;
+    }

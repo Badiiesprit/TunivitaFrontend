@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Center } from 'src/app/model/center';
-import { CenterService } from 'src/app/services/admin/center/center.service';
+import { CenterService } from 'src/app/services/client/center/center.service';
 import { HttpClient } from '@angular/common/http';
 import { ImageService } from 'src/app/services/admin/image/image.service';
 import { Image } from 'src/app/model/image';
 import { environment } from '../../../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { Category } from 'src/app/model/category';
 
 @Component({
   selector: 'app-list-centres-cx',
@@ -14,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class ListCentresCxComponent {
   centers: any[] = [];
+  categorys: any[] = [];
+  
   public motcle: string;
   public baseurl = environment.url;
   filteredCenters: any[] = [];
@@ -22,6 +25,7 @@ export class ListCentresCxComponent {
   sortOrder: string = 'asc'; // Sort order for date sorting
   sort_direction:string= "up";
 
+  public colors = ['primary', 'secondary', 'success', 'info', 'warning', 'danger'];
 
   constructor(
     private centerService: CenterService,
@@ -30,6 +34,37 @@ export class ListCentresCxComponent {
   ) {}
 
   ngOnInit() {
+    
+    this.centerService.getCategorys().subscribe(
+      (response) => {
+        const res_categorys = response.result;
+        res_categorys.forEach((category:Category) => {
+          let liste_categorys: any[] = [];
+          if(!category.parent){
+            res_categorys.forEach((c:Category) => {
+              let category_parent:Category  = c.parent as Category;
+              if(category_parent && category_parent._id==category._id){
+                liste_categorys.push(c);
+              }
+            });
+            this.categorys.push(
+              {
+                parent : category,
+                categorys : liste_categorys
+              }
+            )
+          }
+          
+        });
+        console.log("categorys");
+        console.log(this.categorys);
+        
+      },
+      (error) => {
+        console.error('Error fetching centers:', error);
+      }
+    );
+
     this.centerService.getAll().subscribe(
       (response) => {
         this.centers = response.result;
