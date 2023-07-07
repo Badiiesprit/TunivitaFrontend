@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { CardModule, GridModule, NavModule, UtilitiesModule, TabsModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 
-import { ListeServiceComponent } from './liste-service/liste-service.component';
-import { FormServiceComponent } from './form-service/form-service.component';
+import { ListeOfferComponent } from './liste-offer/liste-offer.component';
+import { FormOfferComponent } from './form-offer/form-offer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShowComponent } from './show/show.component';
 
@@ -25,12 +25,12 @@ import {
 } from '@coreui/angular';
 
 // Theme Routing
-import { ServiceRoutingModule } from './service-routing.module';
+import { OfferRoutingModule } from './offer-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    ServiceRoutingModule,
+    OfferRoutingModule,
     CardModule,
     GridModule,
     UtilitiesModule,
@@ -52,11 +52,11 @@ import { ServiceRoutingModule } from './service-routing.module';
     BadgeModule
   ],
   declarations: [
-  ListeServiceComponent,
-  FormServiceComponent,
+  ListeOfferComponent,
+  FormOfferComponent,
   ShowComponent
 
   ]
 })
-export class ServiceModule {
+export class OfferModule {
 }

@@ -14,6 +14,7 @@ import { FilterPipeModule  } from 'ngx-filter-pipe';
 import { ForgotPasswordComponent } from './services/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './services/reset-password/reset-password.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
 

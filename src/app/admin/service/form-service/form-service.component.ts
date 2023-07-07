@@ -54,14 +54,14 @@ export class FormServiceComponent implements OnInit {
       }
       console.log(this.service);
       this.serviceService.add(this.service).subscribe(() => {
-        this.route.navigate(['service/lister']);
+        this.route.navigate(['admin/service/lister']);
       });
     } else if (this.action == 'Modifier') {
        if (this.selectedFile) {
         this.service.image = this.selectedFile;
       }
       this.serviceService.update(this.service).subscribe(() => {
-        this.route.navigate(['service/lister']);
+        this.route.navigate(['admin/service/lister']);
       });
     }
   }
