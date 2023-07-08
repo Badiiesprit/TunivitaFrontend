@@ -41,7 +41,15 @@ export class ListServiceCxComponent implements OnInit {
       }
     );
   }
-
+  clickService(id: number): void {
+    this.serviceService.clickService(id).subscribe(
+      (response) => {
+      },
+      (error) => {
+        console.error('Error clicking service:', error);
+      }
+    );
+  }
   rateService(serviceId: string, rating: number): void {
     this.serviceService.rateService(serviceId, rating).subscribe(
       (response) => {

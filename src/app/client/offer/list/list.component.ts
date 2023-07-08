@@ -61,8 +61,8 @@ export class ListComponent implements OnInit {
     if (this.motcle) {
       this.filteredOffers = this.offers.filter(offer =>
         offer.name.toLowerCase().includes(this.motcle.toLowerCase()) ||
-        offer.description.toLowerCase().includes(this.motcle.toLowerCase()) ||
-        offer.location.toLowerCase().includes(this.motcle.toLowerCase())
+        offer.description.toLowerCase().includes(this.motcle.toLowerCase())
+        // offer.location.toLowerCase().includes(this.motcle.toLowerCase())
       );
     } else {
       this.filteredOffers = this.offers;
@@ -79,9 +79,7 @@ export class ListComponent implements OnInit {
   }
 
 
-
-
-  sortServicesByDate(): void {
+  sortServicesByRate(): void {
     let arrayToSort = this.offers;
 
     if (this.motcle) {
@@ -89,15 +87,15 @@ export class ListComponent implements OnInit {
     }
 
     arrayToSort.sort((a, b) => {
-      const dateA = new Date(a.date).getTime();
-      const dateB = new Date(b.date).getTime();
+      const rateA = a.averageRating;
+      const rateB = b.averageRating;
 
       if (this.sortOrder === 'asc') {
         this.sort_direction = "up";
-        return dateA - dateB;
+        return rateA - rateB;
       } else {
         this.sort_direction = "down";
-        return dateB - dateA;
+        return rateB - rateA;
       }
     });
     this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';

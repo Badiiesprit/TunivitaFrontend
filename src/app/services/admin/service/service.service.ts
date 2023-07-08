@@ -122,7 +122,16 @@ export class ServiceService {
       })
     );
   }
+  clickService(id: number): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
+    return this.http.post<any>(`${this.url}click/${id}`, {}, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error recording click:', error);
+        throw error;
+      })
+    );
+  }
 
 
 

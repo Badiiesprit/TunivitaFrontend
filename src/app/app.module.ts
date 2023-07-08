@@ -29,6 +29,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 import {
@@ -113,7 +114,8 @@ const APP_CONTAINERS = [
     MatCardModule,
     NgxPaginationModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
 
   ],
   providers: [
