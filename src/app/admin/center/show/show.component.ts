@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { Image } from 'src/app/model/image';
 import * as L from 'leaflet';
-import { Icon, icon } from 'leaflet';
+import { Icon, icon } from 'leaflet'; 
 
 @Component({
   selector: 'app-show',

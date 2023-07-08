@@ -59,6 +59,7 @@ import { ListPostComponent } from './admin/post/list-post/list-post.component';
 import { ListCommentComponent } from './admin/comment/list-comment/list-comment.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ImageModule } from 'primeng/image';
 
 
 
@@ -115,8 +116,8 @@ const APP_CONTAINERS = [
     NgxPaginationModule,
     MatButtonModule,
     MatIconModule,
-    MatTooltipModule
-
+    MatTooltipModule,
+    ImageModule
   ],
   providers: [
     {
