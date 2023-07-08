@@ -54,3 +54,60 @@
 <div class="chart-container">
   <canvas id="myChart"></canvas>
 </div>
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 align="center">Filtre des utilisateurs par date de naissance</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="form-inline mb-3 d-flex">
+        <div class="form-group mr-2" style="width: 150px;">
+          <label for="startDate">Start Date:</label>
+          <input type="date" class="form-control form-control-sm" id="startDate" [(ngModel)]="startDate">
+        </div>&nbsp;&nbsp;
+        <div class="form-group mr-2" style="width: 150px;">
+          <label for="endDate">End Date:</label>
+          <input type="date" class="form-control form-control-sm" id="endDate" [(ngModel)]="endDate">
+        </div>
+      </div>
+    </div>
+  </div>
+      <table class="table table-hover table-bordered rounded" >
+        <thead>
+          <tr>
+            <th scope="col">Prénom</th>
+            <th scope="col">Nom de famille</th>
+            <th scope="col">Email</th>
+            <th scope="col">Date de naissance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.date_birth }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <button class="btn btn-primary" (click)="filterUsersByDate()">Filtrer</button>&nbsp;&nbsp;
+          <button class="btn btn-secondary" (click)="resetFilter()">Rafraichir</button>
+        </tfoot>
+      </table>

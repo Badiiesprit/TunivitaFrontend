@@ -1,4 +1,4 @@
-import { Component, OnInit,ElementRef } from '@angular/core';
+import { Component, OnInit , AfterViewInit, ViewChild,ElementRef } from '@angular/core';
 import { UserService } from '../../../services/admin/user/user.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -6,6 +6,8 @@ import { TokenService } from '../../../services/token/token.service';
 import { User } from 'src/app/model/user';
 import { HttpClient } from '@angular/common/http';
 import Chart, { ChartType } from 'chart.js/auto';
+import { formatDate } from '@angular/common';
+import { HttpHeaders } from '@angular/common/http';
 
 
 @Component({
@@ -19,6 +21,11 @@ export class ListeComponent implements OnInit {
   token: string;
   selectedUser:any;
   user:User;
+
+  @ViewChild('myTable', { static: false }) myTable!: ElementRef;
+  dataTable: any;
+  startDate: string;
+  endDate: string;
 
   myChart:any;
   constructor(
@@ -54,6 +61,7 @@ export class ListeComponent implements OnInit {
       this.createChart(data);
     });
   }
+
 
   createChart(data: any): void {
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
@@ -101,6 +109,47 @@ export class ListeComponent implements OnInit {
         }
       }
     });
+  }
+
+
+
+
+
+filterUsersByDate() {
+  const formattedStartDate = formatDate(this.startDate, 'yyyy-MM-dd', 'en-US');
+    const formattedEndDate = formatDate(this.endDate, 'yyyy-MM-dd', 'en-US');
+
+  if (formattedStartDate && formattedEndDate) {
+    console.log(formattedStartDate, formattedEndDate);
+
+    this.userService.getUsersBetweenDates(formattedStartDate, formattedEndDate).subscribe(
+      (response) => {
+        this.users = response;
+        console.log(response);
+      },
+      (error) => {
+        console.error('Error fetching filtered users:', error);
+      }
+    );
+  } else {
+    console.log('Please provide both start and end dates.');
+  }
+  }
+
+
+
+  resetFilter() {
+    this.startDate = "";
+    this.endDate = "";
+
+    this.userService.get().subscribe(
+      (response) => {
+        this.users = response;
+      },
+      (error) => {
+        console.error('Error fetching users:', error);
+      }
+    );
   }
 
 
