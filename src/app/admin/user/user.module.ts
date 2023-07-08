@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // views
 import { ListeComponent } from './liste/liste.component';
 import { AddComponent } from './add/add.component';
@@ -8,6 +8,17 @@ import { UpdateComponent } from './update/update.component';
 import { UserModalComponent } from './user-modal/user-modal.component';
 // Components Routing
 import { UserRoutingModule } from './user-routing.module';
+
+import {  NavModule, UtilitiesModule, TabsModule } from '@coreui/angular';
+
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
+
+
 // utils
 import {
   ButtonGroupModule,
@@ -20,7 +31,8 @@ import {
   SharedModule,
   SpinnerModule,
   AlertModule,
-  TooltipModule
+  TooltipModule,
+  BadgeModule
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 
@@ -53,7 +65,9 @@ import { IconModule } from '@coreui/icons-angular';
     GridModule,
     IconModule,
     FormModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,NavModule,UtilitiesModule,TabsModule,MatInputModule
+
   ]
 })
 export class UserModule { }
