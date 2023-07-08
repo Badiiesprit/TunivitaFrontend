@@ -48,19 +48,37 @@ export class BlogDetailsComponent implements OnInit {
 
   }
 
-  onSubmit(){
+  // onSubmit(){
+  //   var body = {
+  //     text: this.firstFormGroup.value.text,
+  //     Postid: this.myParam,
+
+  //   };
+  //   this.commentService.addComment(body).subscribe(
+  //     res =>{
+  //       this.firstFormGroup.reset();
+  //       this.ngOnInit();
+
+  //     }
+  //   )
+  // }
+  onSubmit() {
     var body = {
       text: this.firstFormGroup.value.text,
       Postid:this.myParam,
-
     };
+
     this.commentService.addComment(body).subscribe(
-      res =>{
+      (res) => {
         this.firstFormGroup.reset();
+        this.comments.push(res);
+      },
+      (error) => {
+        console.error(error);
         this.ngOnInit();
 
       }
-    )
+    );
   }
   like(){
     this.commentService.like(this.myParam).subscribe(
@@ -141,4 +159,5 @@ export class BlogDetailsComponent implements OnInit {
 
     });
   }
+
 }
