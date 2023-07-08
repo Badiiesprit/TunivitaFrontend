@@ -146,11 +146,34 @@ export class ListComponent implements OnInit {
   }
 
 
+  // sortServicesByRate(): void {
+  //   let arrayToSort = this.offers;
+
+  //   if (this.motcle) {
+  //     arrayToSort = this.filteredOffers;
+  //   }
+
+  //   arrayToSort.sort((a, b) => {
+  //     const rateA = a.averageRating;
+  //     const rateB = b.averageRating;
+
+  //     if (this.sortOrder === 'asc') {
+  //       this.sort_direction = "up";
+  //       return rateA - rateB;
+  //     } else {
+  //       this.sort_direction = "down";
+  //       return rateB - rateA;
+  //     }
+  //   });
+  //   this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+  // }
+
+
   sortServicesByRate(): void {
-    let arrayToSort = this.offers;
+    let arrayToSort = this.filteredOffers;
 
     if (this.motcle) {
-      arrayToSort = this.filteredOffers;
+      arrayToSort = this.filteredOffers.filter(offer => offer.isFavorite); // Apply sorting only to favorites
     }
 
     arrayToSort.sort((a, b) => {
@@ -158,15 +181,26 @@ export class ListComponent implements OnInit {
       const rateB = b.averageRating;
 
       if (this.sortOrder === 'asc') {
-        this.sort_direction = "up";
         return rateA - rateB;
       } else {
-        this.sort_direction = "down";
         return rateB - rateA;
       }
     });
+
+    if (this.motcle) {
+      this.filteredOffers = this.filteredOffers.map(offer => {
+        if (offer.isFavorite) {
+          return arrayToSort.shift();
+        }
+        return offer;
+      });
+    } else {
+      this.filteredOffers = arrayToSort;
+    }
+
     this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
   }
+
 
   getSortIconClass(): string {
     return this.sortOrder === 'asc' ? 'asc' : 'desc';

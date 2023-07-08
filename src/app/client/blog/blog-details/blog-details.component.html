@@ -1,114 +1,75 @@
 <div class="container" align="center">
-    <mat-card class="example-card">
-        <div align="end">
-            <button (click)="downloadAsPDF()" mat-raised-button color="primary" align="right">Download PDF</button>
-        </div>
-
-        <div>
-            <mat-card-header>
-
-                <mat-card-title align="left">{{post.title|titlecase}}</mat-card-title>
-                <mat-card-subtitle align="left">{{post.createdAt | date:"MM/dd/yyyy HH:mm"}}</mat-card-subtitle>
-
-
-
-
-
-            </mat-card-header>
-            <mat-card-content align="left">
-                <p>
-                    {{post.short_description}}
-                </p>
-
-            </mat-card-content>
-
-        </div>
-        <p></p>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-
-        <div align="left">
-            <i class="fa-solid fa-thumbs-up"></i>
-            {{post.likes}}
-            <i class="fa-solid fa-thumbs-down"></i>
-            {{post.dislikes}}
-        </div>
-        <mat-card-actions>
-
-            <div>
-                <button mat-button (click)="like()">Like</button>
-                <button mat-button (click)="dislike()">Dislike</button>
-
-            </div>
-
-
-
-        </mat-card-actions>
-        <div *ngFor="let c of comments; index as i">
-            <mat-card>
-                <button (click)="deleteComment(c)" style="background: none; border: none; margin-left: 700px;"
-                    align="end">
-                    <i class="fas fa-times delete-icon"></i>
-                </button>
-                <button (click)="showEdit(c)" style="background: none; border: none; margin-left: 700px;"
-                    align="end">
-                    <i class="fas fa-pen delete-icon"></i>
-                </button>
-                <mat-card-header align="left">
-                    <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title>Shiba Inu</mat-card-title>
-                    <mat-card-subtitle>{{c.createdAt | date:"MM/dd/yyyy HH:mm"}}</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content align="left">
-                    <p *ngIf="commentIndex!==i">
-                       
-                        {{c.text}}
-                    </p>
-                    <div *ngIf="showComment==true && commentIndex==i">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <form class="example-form" >
-                                <div class="form-group">
-                                    <textarea matInput placeholder="" [formControl]="formComment"></textarea>
-                                </div>
-                                <button (click)="updateComment(c)" mat-raised-button color="primary">Edit</button>
-                            </form>
-                        </mat-form-field>
-                    </div>
-                    
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Leave a comment</mat-label>
-
-
-            <form class="example-form" [formGroup]="firstFormGroup" (submit)="onSubmit()">
-                <div class="form-group">
-                    <textarea matInput placeholder="" formControlName="text"></textarea>
-                </div>
-                <button type="submit" mat-raised-button color="primary">comment</button>
-            </form>
-        </mat-form-field>
-    </mat-card>
-
-</div>
-
-<div hidden>
-    <div id="myHtmlElement" style="max-width: 70px !important;">
-        <h2>Title:</h2>
-        <h2 style="font-size: smaller;" align="left">{{post.title|titlecase}}</h2>
-        <h4 style="font-size: smaller;" align="left">{{post.createdAt | date:"MM/dd/yyyy HH:mm"}}</h4>
-
-
-
-        <p><b>Description:</b> </p>
-        <p style="font-size: xx-small;">
-            {{post.short_description}}
-        </p>
+  <mat-card class="example-card">
+    <div align="end">
+      <button (click)="downloadAsPDF()" mat-raised-button color="primary" align="right">Download PDF</button>
     </div>
 
+    <mat-card-header>
+      <mat-card-title align="left">{{post.title | titlecase}}</mat-card-title>
+      <mat-card-subtitle align="left">{{post.createdAt | date:"MM/dd/yyyy HH:mm"}}</mat-card-subtitle>
+    </mat-card-header>
 
+    <mat-card-content align="left">
+      <p>{{post.short_description}}</p>
+    </mat-card-content>
 
+    <img mat-card-image [src]="baseurl + post.image[0].path" alt="Photo of a Shiba Inu">
 
+    <div align="left">
+      <i class="fa-solid fa-thumbs-up"></i> {{post.likes}}
+      <i class="fa-solid fa-thumbs-down"></i> {{post.dislikes}}
+    </div>
 
+    <mat-card-actions>
+      <div>
+        <button mat-button (click)="like()">Like</button>
+        <button mat-button (click)="dislike()">Dislike</button>
+      </div>
+    </mat-card-actions>
 
+    <div *ngFor="let c of comments; index as i">
+      <mat-card>
+        <button (click)="deleteComment(c)" style="background: none; border: none; margin-left: 700px;" align="end">
+          <i class="fas fa-times delete-icon"></i>
+        </button>
+        <button (click)="showEdit(c)" style="background: none; border: none; margin-left: 700px;" align="end">
+          <i class="fas fa-pen delete-icon"></i>
+        </button>
+        <mat-card-header align="left">
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>{{c.createdAt | date:"MM/dd/yyyy HH:mm"}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content align="left">
+          <p *ngIf="commentIndex !== i">{{c.text}}</p>
+          <div *ngIf="showComment && commentIndex === i">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <textarea matInput placeholder="" [formControl]="formComment"></textarea>
+              <button (click)="updateComment(c)" mat-raised-button color="primary">Edit</button>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Leave a comment</mat-label>
+      <form class="example-form" [formGroup]="firstFormGroup" (submit)="onSubmit()">
+        <div class="form-group">
+          <textarea matInput placeholder="" formControlName="text"></textarea>
+        </div>
+        <button type="submit" mat-raised-button color="primary">Comment</button>
+      </form>
+    </mat-form-field>
+
+    <div hidden>
+      <div id="myHtmlElement">
+        <h2>Title:</h2>
+        <h2 style="font-size: smaller;" align="left">{{post.title | titlecase}}</h2>
+        <h4 style="font-size: smaller;" align="left">{{post.createdAt | date:"MM/dd/yyyy HH:mm"}}</h4>
+        <p><b>Description:</b></p>
+        <p style="font-size: xx-small;">{{post.short_description}}</p>
+      </div>
+    </div>
+  </mat-card>
 </div>

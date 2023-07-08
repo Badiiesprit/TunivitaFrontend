@@ -19,17 +19,15 @@
                 class="card" style="width: 18rem;">
                 <div class="image-container">
                     <div class="image-container">
-                        <img [src]="baseurl + blog.image.path" class="card-img-top" alt="..." width="200px" height="300px">
+                        <img [src]="baseurl + blog.image[0].path" class="card-img-top" alt="..." width="200px" height="300px">
                       </div>
                 </div>
 
                 <div class="card-body">
                     <h5 class="card-title">{{ blog.title }}</h5>
                     <p class="card-text limited-description">{{ blog.description }}</p>
-                    <p class="card-text"> <i class="fas fa-map-marker-alt"></i> {{ blog.location }}</p>
                     <div class="plus">
-                        <p class="card-text"> <i class="fas fa-calendar-alt"></i> {{ blog.createdAt |
-                            date:'yyyy-MM-dd' }} </p>
+                        <p class="card-text"> <i class="fas fa-calendar-alt"></i> {{ blog.createdAt | date:'yyyy-MM-dd' }} </p>
                         <button [routerLink]="['/blogs/show-blog',blog._id]">Voir plus</button>
                     </div>
                 </div>

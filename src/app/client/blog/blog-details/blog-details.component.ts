@@ -5,6 +5,10 @@ import { CommentService } from 'src/app/services/admin/comment/comment.service';
 import { PostService } from 'src/app/services/admin/post/post.service';
 import { jsPDF } from 'jspdf';
 import { Comment } from 'src/app/model/comment';
+import { environment } from '../../../environments/environment';
+
+
+import html2canvas from 'html2canvas';
 
 
 @Component({
@@ -22,6 +26,8 @@ export class BlogDetailsComponent implements OnInit {
   comments:any;
   post: any;
   formComment = new FormControl('');
+  public baseurl = environment.url;
+
 
   firstFormGroup = this._formBuilder.group({
     text: ['']
@@ -36,32 +42,50 @@ export class BlogDetailsComponent implements OnInit {
                 res => this.comments = res
               )
              }
-            
+
           )
       });
-      
+
   }
 
-  onSubmit(){
+  // onSubmit(){
+  //   var body = {
+  //     text: this.firstFormGroup.value.text,
+  //     Postid: this.myParam,
+
+  //   };
+  //   this.commentService.addComment(body).subscribe(
+  //     res =>{
+  //       this.firstFormGroup.reset();
+  //       this.ngOnInit();
+
+  //     }
+  //   )
+  // }
+  onSubmit() {
     var body = {
       text: this.firstFormGroup.value.text,
       Postid: this.myParam,
-      
     };
+
     this.commentService.addComment(body).subscribe(
-      res =>{
+      (res) => {
         this.firstFormGroup.reset();
+        this.comments.push(res);
+      },
+      (error) => {
+        console.error(error);
         this.ngOnInit();
-        
+
       }
-    )
+    );
   }
   like(){
     this.commentService.like(this.myParam).subscribe(
       res =>{
         this.firstFormGroup.reset();
         this.ngOnInit();
-        
+
       }
     )
 
@@ -71,18 +95,18 @@ export class BlogDetailsComponent implements OnInit {
       res =>{
         //this.firstFormGroup.reset();
         this.ngOnInit();
-        
+
       }
     )
 
   }
 
   htmlSelection:any;
+
   downloadAsPDF() {
     const doc = new jsPDF();
-  
     this.htmlSelection = document.querySelector('#myHtmlElement');
-  
+
     this.htmlSelection.style.width = '50mm';
     doc.html(this.htmlSelection, {
       callback: function () {
@@ -90,6 +114,8 @@ export class BlogDetailsComponent implements OnInit {
       }
     });
   }
+
+
 
   deleteComment(comment: Comment) {
     const i = this.comments.indexOf(comment);
@@ -117,22 +143,21 @@ export class BlogDetailsComponent implements OnInit {
   showComment:boolean;
   updateComment(comment:any){
     const i = this.comments.indexOf(comment);
-    
-      
+
+
       var body = {
         _id: this.commentDetails._id,
         text:this.formComment.value,
-       
+
       };
-    
-    
+
+
     this.commentService.update(body).subscribe(() => {
       this.showComment=false;
       this.commentIndex=-1
       this.ngOnInit();
-      
+
     });
   }
-  
 
 }
