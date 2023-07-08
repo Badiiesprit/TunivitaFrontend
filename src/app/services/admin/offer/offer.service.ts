@@ -53,7 +53,7 @@ export class OfferService {
       );
   }
 
-  searsh(id: number): Observable<Offer> {
+  searsh(id: string): Observable<Offer> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.get<Offer>(this.url + 'get/' + id, { headers }).pipe(
       tap((response: Offer) => {
@@ -101,5 +101,31 @@ export class OfferService {
     );
 
   }
+
+
+  rate(offerId: string, rating: number): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    const body = {
+      rating
+    };
+
+    return this.http.post<any>(`${this.url}rate/${offerId}`, body, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error rating service:', error);
+        throw error;
+      })
+    );
+  }
+
+  getOffersByCenter(id: string): Observable<any> {
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+      return this.http.get<any>(`${this.url}offers-by-center/${id}`, { headers })
+        .pipe(
+          catchError((error: any) => {
+            console.error('Une erreur s\'est produite lors de la récupération des offres:', error);
+            throw error;
+          })
+        );
+    }
 
 }

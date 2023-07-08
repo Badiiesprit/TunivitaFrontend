@@ -1,0 +1,180 @@
+.card .image-container {
+  width: 100%; /* Set the width of the container to 100% of the card */
+  height: 300px; /* Set the desired height for the container */
+  overflow: hidden;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+
+}
+
+.card .image-container img {
+  width: 100%;
+  height: 100%; /* Let the height adjust automatically to maintain aspect ratio */
+  object-fit: cover; /* Crop and fit the image within the container */
+}
+
+.card .limited-description {
+  width: 100%;
+  max-height: 3em; /* Set the maximum height to show three lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit the text to three lines */
+  -webkit-box-orient: vertical;
+}
+
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 90%;
+  border-radius: 100px;
+
+}
+.search-container .form-control {
+  flex: 1;
+  margin-right: 10px;
+  border-radius: 100px;
+  margin-left: 30px;
+}
+
+.sort-button {
+  width: 40px; /* Adjust the size of the button as needed */
+  height: 40px;
+  border-radius: 20px; /* Make the button circular */
+  border-width: 1px;
+  border-color:#004AAD ;
+  background-color: white; /* Add background color to the button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative; /* Add position relative */
+}
+.fas {
+  color:#004AAD ;
+}
+.sort-icon.asc {
+  transform: translate(-50%, -50%) rotate(180deg); /* Apply rotation for ascending icon */
+}
+.card-container {
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+
+}
+
+.card {
+  margin-right: 20px;
+  margin-bottom: 30px;
+  height: 400px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .pagination button {
+    margin: 0 3px;
+    padding: 5px 10px; /* Adjust the padding */
+    font-size: 14px;
+    background-color: #004AAD;
+    color: #fff;
+  }
+
+  .pagination button:hover {
+    background-color: #fff;
+    color: #004AAD;
+    border: 1px solid #004AAD;
+  }
+
+  .pagination-number {
+    margin: 0 3px; /* Reduce the horizontal margin */
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .pagination-number.active {
+    font-weight: bold;
+  }
+
+  .plus {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Align items vertically in the center */
+  }
+
+  .plus p {
+    margin-right: 70px;
+    margin-bottom: 0;/* Add some spacing between the date and the button */
+  }
+  .plus button {
+    margin-right: auto;
+    background-color: #fff; /* Add some spacing between the date and the button */
+    color: #004AAD;
+    border: none;
+  }
+  .plus button:hover {
+    margin-right: auto;
+    background-color: #004AAD; /* Add some spacing between the date and the button */
+    color: #fff;
+    border-radius: 50px;
+    border-color: none;
+    padding: 5px 10px;
+  }
+
+
+/* Star Rating Styles */
+.star-rating {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.star-rating .star {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+
+/* Star Rating Styles */
+.rating {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.rating .star {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.rating .star i {
+  color: #bbb;
+}
+
+.rating .star.full i {
+  color: #ffcc00;
+}
+.rating .star:hover i,
+.rating .star.selected i {
+  color: #ffcc00;
+}

@@ -175,6 +175,36 @@ const routes: Routes = [
 
     ]
   },
+  {
+    path: 'blogs',
+    component: DefaultLayoutCxComponent,
+    data: {
+      title: 'blogs'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./client/blog/blog.module').then((m) => m.BlogModule)
+      },
+
+    ]
+  },
+  {
+    path: 'client/offre',
+    component: DefaultLayoutCxComponent,
+    data: {
+      title: 'Offre'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./client/offer/offer.module').then((m) => m.OffreModule)
+      },
+
+    ]
+  },
 
   {
     path: 'admin',

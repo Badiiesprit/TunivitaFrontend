@@ -1,0 +1,53 @@
+<form class="d-flex" role="search">
+<div class="search-container">
+    <input class="form-control me-2" type="search" name="search" placeholder="Search..."
+      [(ngModel)]="motcle" (input)="search()">
+    </div>
+
+      <div class="sort-container">
+        <button class="sort-button" (click)="sortServicesByDate()">
+          <span class="sort-icon" [class.asc]="sortOrder === 'asc'" [class.desc]="sortOrder === 'desc'"></span>
+          <i class="fas fa-arrow-{{sort_direction}}-wide-short"></i> </button>
+      </div>
+  </form>
+
+<div class="card-container">
+  <div class="card-wrapper">
+  <div *ngFor="let offer of filteredOffers | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage"
+    class="card" style="width: 18rem;">
+    <div class="image-container">
+      <img [src]="baseurl + offer.image.path" class="card-img-top" alt="..." width="200px" height="300px">
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">{{ offer.name }}</h5>
+      <p class="card-text limited-description">{{ offer.description }}</p>
+      <p class="card-text"> <i class="fas fa-map-marker-alt"></i> {{ offer.center.location }}</p>
+
+      <div class="rating">
+        <span class="star" [class.full]="offer.averageRating >= 1" (click)="rateService(offer._id, 1)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="offer.averageRating >= 2" (click)="rateService(offer._id, 2)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="offer.averageRating >= 3" (click)="rateService(offer._id, 3)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="offer.averageRating >= 4" (click)="rateService(offer._id, 4)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="offer.averageRating >= 5" (click)="rateService(offer._id, 5)"><i class="fas fa-star"></i></span>
+      </div>
+
+      <div class="plus">
+        <button [routerLink]="['/client/offer/show', offer._id]">Voir plus</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="pagination">
+  <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="currentPage = 1">First</button>
+  <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="currentPage = currentPage - 1">Previous</button>
+  <div class="pagination-number" *ngFor="let page of getPageNumbers()" [class.active]="currentPage === page" (click)="currentPage = page">
+    {{ page }}
+  </div>
+  <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="currentPage = currentPage + 1">Next</button>
+  <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="currentPage = totalPages">Last</button>
+</div>
+
+

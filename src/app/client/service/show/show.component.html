@@ -2,46 +2,55 @@
   <div class="row justify-content-center">
 
       <div class="card-body">
-          <h6 class="card-title text-center">{{service.name}}</h6>
-          <div class="row justify-content-center"> <!-- Add justify-content-center class to center the row -->
-            <div class="col-md-12 text-center"> <!-- Add text-center class to center the content -->
+          <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
               <div class="image-container">
                 <img src="{{baseurl}}{{image.path}}" alt="Image description">
               </div>
             </div>
+            <div><h1 class="card-title text-center">{{service.name}}</h1></div>
               <div class="col-md-12">
                 <p class="card-text">
-                  <span class="label">Description:</span><br>
                   {{service.description}}
                 </p>
               </div>
+
               <div class="col-md-12">
                 <p class="card-text">
-                  <span class="label">Location:</span><br>
-                  {{service.location}}
+                  <span class="label"><i class="fa fa-calendar"></i></span><br>
+                  {{service.date | date:'yyyy-MM-dd'}}
                 </p>
               </div>
+
               <div class="col-md-12">
                 <p class="card-text">
-                  <span class="label">Phone:</span><br>
+                  <span class="label"><i class="fa fa-phone"></i></span><br>
                   {{service.phone}}
                 </p>
               </div>
               <div class="col-md-12">
-                <p class="card-text">
-                  <span class="label">Email:</span><br>
-                  {{service.email}}
-                </p>
-              </div>
-              <div class="col-md-12 text-center">
-                <div class="image-container">
-                  <img src="{{service.qrCode}}" alt="QrCode">
+                <div class="col-md-12">
+                  <p class="card-text">
+                    <span class="label"><i class="fa fa-envelope"></i></span><br> <!-- Icon for Email using Font Awesome -->
+                    {{service.email}}
+                  </p>
                 </div>
-              </div>
-            </div>
-            <div class="text-center">
-              <div id="map"></div>
-            </div>
+
+                <div class="col-md-12">
+                  <p class="card-text">
+                    <span class="label">
+                      <i class="fa-sharp fa-solid fa-location-dot"></i>
+                    </span><br>
+                    {{service.location}}
+                  </p>
+                </div>
+
+                <div class="col-md-12 text-center bottom-QrCode-container">
+                  <div class="image-container">
+                    <img src="{{service.qrCode}}" alt="QrCode">
+                  </div>
+                </div>
+
             <br/>
 
           </div>

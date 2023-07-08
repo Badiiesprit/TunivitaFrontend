@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row justify-content-center">
+
+    <div class="card-body first-section">
+
+      <div class="card-body">
+          <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+              <div class="image-container">
+                <img src="{{baseurl}}{{image.path}}" alt="Image description">
+              </div>
+            </div>
+
+
+            <div><h1 class="card-title text-center">{{offre.name}}</h1></div>
+              <div class="col-md-12">
+                <p class="card-text">
+                  {{offre.description}}
+                </p>
+              </div>
+
+
+              <div class="col-md-12">
+                <p class="card-text">
+                  <span class="label"><i class="fa fa-phone"></i></span><br>
+                  {{offre.center.phone}}
+                </p>
+              </div>
+
+
+              <div class="col-md-12">
+                <div class="col-md-12">
+                  <p class="card-text">
+                    <span class="label"><i class="fa fa-envelope"></i></span><br> <!-- Icon for Email using Font Awesome -->
+                    {{offre.center.email}}
+                  </p>
+                </div>
+
+                <div class="col-md-12">
+                  <p class="card-text">
+                    <span class="label">
+                      <i class="fa-sharp fa-solid fa-location-dot"></i>
+                    </span><br>
+                    {{offre.center.location}}
+                  </p>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+
+    <div class="card-container second-section">
+              <div class="rec">
+                <p>Recommandé pour vous </p>
+              </div>
+      <div class="card-wrapper">
+  <div *ngFor="let o of offers " class="card" style="width: 18rem;">
+    <div class="image-container">
+      <img [src]="baseurl + o.image.path" class="card-img-top" alt="..." width="200px" height="300px">
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">{{ o.name }}</h5>
+      <p class="card-text limited-description">{{ o.description }}</p>
+      <p class="card-text"> <i class="fas fa-map-marker-alt"></i> {{ o.center.location }}</p>
+
+      <div class="rating">
+        <span class="star" [class.full]="o.averageRating >= 1" (click)="rateService(o._id, 1)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="o.averageRating >= 2" (click)="rateService(o._id, 2)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="o.averageRating >= 3" (click)="rateService(o._id, 3)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="o.averageRating >= 4" (click)="rateService(o._id, 4)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="o.averageRating >= 5" (click)="rateService(o._id, 5)"><i class="fas fa-star"></i></span>
+      </div>
+      <div class="plus">
+        <button [routerLink]="['/client/offer/show', o._id]">Voir plus</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+

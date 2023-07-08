@@ -28,5 +28,9 @@ export class AppComponent implements OnInit {
         return;
       }
     });
+    navigator.geolocation.getCurrentPosition((e)=>{
+      localStorage.setItem('latitude', e.coords.latitude.toString());
+      localStorage.setItem('longitude', e.coords.longitude.toString());
+    })
   }
 }
