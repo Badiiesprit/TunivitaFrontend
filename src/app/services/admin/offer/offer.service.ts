@@ -127,5 +127,27 @@ export class OfferService {
           })
         );
     }
+    toggleFavorite(offerId: string): Observable<any> {
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+
+      return this.http.post<any>(`${this.url}favorite/${offerId}`, null, { headers }).pipe(
+        catchError((error) => {
+          console.error('Error toggling favorite:', error);
+          throw error;
+        })
+      );
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
