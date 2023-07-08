@@ -10,6 +10,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { CarouselModule } from 'primeng/carousel';
 
 import {
   ButtonGroupModule,
@@ -44,7 +45,7 @@ import { OfferRoutingModule } from './offer-routing.module';
     MatGridListModule,
     MatCardModule,
     NgxPaginationModule,
-    SlickCarouselModule
+    CarouselModule
 
   ],
   declarations: [

@@ -4,6 +4,8 @@ import { OfferService } from 'src/app/services/admin/offer/offer.service';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { Image } from 'src/app/model/image';
+import { CarouselModule } from 'primeng/carousel';
+
 
 @Component({
   selector: 'app-show',

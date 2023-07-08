@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row justify-content-center">
-
     <div class="card-body first-section">
 
       <div class="card-body">
@@ -52,12 +51,21 @@
 </div>
 
 
+
+
+
     <div class="card-container second-section">
               <div class="rec">
                 <p>Recommandé pour vous </p>
               </div>
-      <div class="card-wrapper">
-  <div *ngFor="let o of offers " class="card" style="width: 18rem;">
+
+
+      <div class="slides-carousel-servise">
+          <p-carousel [value]="offers" [numVisible]="3" [numScroll]="3" [circular]="false" >
+            <ng-template let-o pTemplate="item">
+
+                <div class="card">
+
     <div class="image-container">
       <img [src]="baseurl + o.image.path" class="card-img-top" alt="..." width="200px" height="300px">
     </div>
@@ -79,6 +87,23 @@
       </div>
     </div>
   </div>
+
+
+
+  </ng-template>
+
+</p-carousel>
 </div>
+
 </div>
+
+
+
+
+
+
+
+
+
+
 
