@@ -1,12 +1,23 @@
 .slides-carousel{
     margin-top: -30px;
-    margin-left: -10.5%;
-    margin-right: -10.5%;
+    margin-left: -8%;
+    margin-right: -8%;
     margin-bottom: 30px;
 }
+.distance-center-in-maps{
+    object-fit: contain;
+    border-radius: 5%;
 
+}
+.carousel-item-slider{
+    height: 500px;
+}
 #map {
     height: 500px; /* Ajustez la hauteur selon vos besoins */
     width: 100%;
     overflow:hidden;
+}
+.card{
+    background-color: transparent;
+    border: none;
 }
