@@ -39,6 +39,21 @@
   margin-left: 30px;
 }
 
+.showFavorite {
+  width: 40px; /* Adjust the size of the button as needed */
+  height: 40px;
+  border-radius: 20px; /* Make the button circular */
+  border-width: 1px;
+  border-color:#004AAD ;
+  background-color: white; /* Add background color to the button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  margin-left: 10px;
+}
+
 .sort-button {
   width: 40px; /* Adjust the size of the button as needed */
   height: 40px;
@@ -177,4 +192,53 @@
 .rating .star:hover i,
 .rating .star.selected i {
   color: #ffcc00;
+}
+
+
+
+.favorite-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.favorite-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 20px;
+  transition: color 0.3s;
+  margin-right: 10px;
+}
+
+
+
+
+.fa-heart {
+  font-size: 24px;
+  color: blue;
+  transition: color 0.3s;
+}
+
+.fa-heart.favorite {
+  color: red;
+}
+
+.fa-heart:hover {
+  color: green; /* Color when hovering over the heart icon */
+}
+
+
+.show-favorites-button {
+  background-color: #004AAD;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.show-favorites-button:hover {
+  background-color: #002f5e;
 }
