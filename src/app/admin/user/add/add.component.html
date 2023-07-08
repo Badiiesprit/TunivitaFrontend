@@ -4,52 +4,55 @@
       <c-col lg="7" md="9" xl="6">
         <c-card class="mx-4">
           <c-card-body class="p-4">
-            <form (submit)="submitForm()">
-              <h1>Add User</h1>
+            <form (submit)="submitForm()" #f="ngForm">
+              <h1>Ajout Utilisateur</h1>
 
               <div class="form-group">
-                <label for="firstname">Firstname</label>
+                <label for="firstname">Prénom</label>
                 <input
                   type="text"
                   name="firstname"
                   class="form-control"
                   id="firstname"
+                  #n="ngModel"
                   aria-describedby="firstname"
                   placeholder=""
                   [(ngModel)]="user.firstname"
                 />
+
+                <div class="text-danger text-capitalize" *ngIf="n.invalid && n.touched">
+                  <div *ngIf="n.hasError('required')">Ce champ est obligatoire</div>
+                </div>
               </div>
 
               <div class="form-group">
-                <label for="lastname">Lastname</label>
+                <label for="lastname">Nom de famille</label>
                 <input
                   type="text"
                   name="lastname"
                   class="form-control"
                   id="lastname"
+                  #l="ngModel"
                   aria-describedby="lastname"
                   placeholder=""
                   [(ngModel)]="user.lastname"
                 />
+                <div class="text-danger text-capitalize" *ngIf="l.invalid && l.touched">
+                  <div *ngIf="l.hasError('required')">Ce champ est obligatoire</div>
+                </div>
               </div>
 
               <div class="form-group">
-                <label for="select">Gender</label>
-                <select
-                  class="form-select"
-                  aria-label="Gender"
-                  name="gender"
-                  id="gender"
-                  [(ngModel)]="user.gender"
-                >
-                  <option selected></option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
+                <label for="gender">Sexe</label>
+                <select class="form-select" aria-label="Gender" name="gender" id="gender" [(ngModel)]="user.gender">
+                  <option value=""></option>
+                  <option value="Homme">Homme</option>
+                  <option value="Femme">Femme</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label for="date_birth">Date Of Birth</label>
+                <label for="date_birth">Date de naissance</label>
                 <input
                   type="date"
                   name="date_birth"
@@ -62,7 +65,7 @@
               </div>
 
               <div class="form-group">
-                <label for="phone">Phone Number</label>
+                <label for="phone">Numéro de téléphone</label>
                 <input
                   type="number"
                   name="phone"
@@ -75,7 +78,7 @@
               </div>
 
               <div class="form-group">
-                <label for="address">Address</label>
+                <label for="address">Adresse</label>
                 <input
                   type="text"
                   name="address"
@@ -88,7 +91,7 @@
               </div>
 
               <div class="form-group">
-                <label for="state">State</label>
+                <label for="state">Pays</label>
                 <input
                   type="text"
                   name="state"
@@ -101,9 +104,9 @@
               </div>
 
               <div class="form-group">
-                <label for="city">City</label>
+                <label for="city">Ville</label>
                 <input
-                  type="city"
+                  type="text"
                   name="city"
                   class="form-control"
                   id="city"
@@ -114,7 +117,7 @@
               </div>
 
               <div class="form-group">
-                <label for="zip_code">Zip_code</label>
+                <label for="zip_code">Code postal</label>
                 <input
                   type="number"
                   name="zip_code"
@@ -129,38 +132,44 @@
               <div class="form-group">
                 <label for="email">Email</label>
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   class="form-control"
                   id="email"
+                  #e="ngModel"
                   aria-describedby="email"
                   placeholder=""
                   [(ngModel)]="user.email"
                 />
+                <div class="text-danger text-capitalize" *ngIf="e.invalid && e.touched">
+                  <div *ngIf="e.hasError('required')">Ce champ est obligatoire</div>
+                </div>
               </div>
 
               <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
+                <label for="password">Mot de passe</label>
                 <input
                   type="password"
                   name="password"
                   class="form-control"
-                  id="exampleInputPassword1"
+                  id="password"
+                  #p="ngModel"
                   placeholder=""
                   [(ngModel)]="user.password"
                 />
+                <div class="text-danger text-capitalize" *ngIf="p.invalid && p.touched">
+                  <div *ngIf="p.hasError('required')">Ce champ est obligatoire</div>
+                </div>
               </div>
 
               <div class="form-group">
                 <label for="image">Image:</label>
-                <input type="file" class="form-control" id="image" name="image" (change)="onFileSelected($event)">
+                <input type="file" class="form-control" id="image" name="image" (change)="onFileSelected($event)" />
               </div>
-
               <br />
+
               <div class="d-grid">
-                <button type="submit" cButton color="success">
-                  Add User
-                </button>
+                <button type="submit" cButton color="success">Ajouter</button>
               </div>
             </form>
           </c-card-body>

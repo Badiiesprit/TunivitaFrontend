@@ -65,4 +65,14 @@ getById(id:string): Observable<any> {
   search(id:number){
     return this.http.get<User>(this.url+id)
   }
+  getStatistics(){
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.get<any>(this.url + 'statistics', { headers }).pipe(
+      catchError((error) => {
+        console.error('Error updating statistics:', error);
+        throw error;
+      })
+    );
+
+  }
 }

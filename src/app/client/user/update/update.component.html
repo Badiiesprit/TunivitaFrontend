@@ -1,1 +1,171 @@
-<p>update works!</p>
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+  <c-container>
+    <c-row class="justify-content-center">
+      <c-col lg="7" md="9" xl="6">
+        <c-card class="mx-4">
+          <c-card-body class="p-4">
+            <form (submit)="submitForm()">
+              <h1>Update User</h1>
+              <p class="text-medium-emphasis">User_id: {{user._id}}</p>
+
+              <div class="form-group">
+                <label for="firstname">Firstname</label>
+                <input
+                  type="text"
+                  name="firstname"
+                  class="form-control"
+                  id="firstname"
+                  aria-describedby="firstname"
+                  placeholder=""
+                  [(ngModel)]="user.firstname"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="lastname">Lastname</label>
+                <input
+                  type="text"
+                  name="lastname"
+                  class="form-control"
+                  id="lastname"
+                  aria-describedby="lastname"
+                  placeholder=""
+                  [(ngModel)]="user.lastname"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="select">Gender</label>
+                <select
+                  class="form-select"
+                  aria-label="Gender"
+                  name="gender"
+                  id="gender"
+                  [(ngModel)]="user.gender"
+                >
+                  <option selected></option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="date_birth">Date Of Birth</label>
+                <input
+                  type="date"
+                  name="date_birth"
+                  class="form-control"
+                  id="date_birth"
+                  aria-describedby="date_birth"
+                  [(ngModel)]="user.date_birth"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input
+                  type="number"
+                  name="phone"
+                  class="form-control"
+                  id="phone"
+                  aria-describedby="phone"
+                  placeholder=""
+                  [(ngModel)]="user.phone"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input
+                  type="text"
+                  name="address"
+                  class="form-control"
+                  id="address"
+                  aria-describedby="address"
+                  placeholder=""
+                  [(ngModel)]="user.address"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="state">State</label>
+                <input
+                  type="text"
+                  name="state"
+                  class="form-control"
+                  id="state"
+                  aria-describedby="state"
+                  placeholder=""
+                  [(ngModel)]="user.state"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="city">City</label>
+                <input
+                  type="city"
+                  name="city"
+                  class="form-control"
+                  id="city"
+                  aria-describedby="city"
+                  placeholder=""
+                  [(ngModel)]="user.city"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="zip_code">Zip_code</label>
+                <input
+                  type="number"
+                  name="zip_code"
+                  class="form-control"
+                  id="zip_code"
+                  aria-describedby="zip_code"
+                  placeholder=""
+                  [(ngModel)]="user.zip_code"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="text"
+                  name="email"
+                  class="form-control"
+                  id="email"
+                  aria-describedby="email"
+                  placeholder=""
+                  [(ngModel)]="user.email"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  placeholder=""
+                  [(ngModel)]="user.password" disabled
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" class="form-control" id="image" name="image" (change)="onFileSelected($event)">
+              </div>
+
+              <br />
+              <div class="d-grid">
+                <button type="submit" cButton color="success">
+                  Update User
+                </button>
+              </div>
+            </form>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../services/admin/user/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({

@@ -6,10 +6,10 @@
           <c-card-body class="p-4">
             <form (submit)="submitForm()">
               <h1>Update User</h1>
-              <p class="text-medium-emphasis">User_id: {{user._id}}</p>
+              <p class="text-medium-emphasis">Id Utilisateur: {{user._id}}</p>
 
               <div class="form-group">
-                <label for="firstname">Firstname</label>
+                <label for="firstname">Prénom</label>
                 <input
                   type="text"
                   name="firstname"
@@ -22,7 +22,7 @@
               </div>
 
               <div class="form-group">
-                <label for="lastname">Lastname</label>
+                <label for="lastname">Nom de famille</label>
                 <input
                   type="text"
                   name="lastname"
@@ -35,7 +35,7 @@
               </div>
 
               <div class="form-group">
-                <label for="select">Gender</label>
+                <label for="select">Sexe</label>
                 <select
                   class="form-select"
                   aria-label="Gender"
@@ -44,13 +44,13 @@
                   [(ngModel)]="user.gender"
                 >
                   <option selected></option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
+                  <option value="Homme">Homme</option>
+                  <option value="Femme">Femme</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label for="date_birth">Date Of Birth</label>
+                <label for="date_birth">Date de naissance</label>
                 <input
                   type="date"
                   name="date_birth"
@@ -62,7 +62,7 @@
               </div>
 
               <div class="form-group">
-                <label for="phone">Phone Number</label>
+                <label for="phone">Numéro de téléphone</label>
                 <input
                   type="number"
                   name="phone"
@@ -75,7 +75,7 @@
               </div>
 
               <div class="form-group">
-                <label for="address">Address</label>
+                <label for="address">Addresse</label>
                 <input
                   type="text"
                   name="address"
@@ -88,7 +88,7 @@
               </div>
 
               <div class="form-group">
-                <label for="state">State</label>
+                <label for="state">Pays</label>
                 <input
                   type="text"
                   name="state"
@@ -101,7 +101,7 @@
               </div>
 
               <div class="form-group">
-                <label for="city">City</label>
+                <label for="city">Ville</label>
                 <input
                   type="city"
                   name="city"
@@ -114,7 +114,7 @@
               </div>
 
               <div class="form-group">
-                <label for="zip_code">Zip_code</label>
+                <label for="zip_code">Code Postal</label>
                 <input
                   type="number"
                   name="zip_code"
@@ -140,7 +140,7 @@
               </div>
 
               <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
+                <label for="exampleInputPassword1">Mot de passe</label>
                 <input
                   type="password"
                   name="password"
@@ -152,14 +152,14 @@
               </div>
 
               <div class="form-group">
-                <label for="image">Image:</label>
+                <label for="image">Image</label>
                 <input type="file" class="form-control" id="image" name="image" (change)="onFileSelected($event)">
               </div>
 
               <br />
               <div class="d-grid">
                 <button type="submit" cButton color="success">
-                  Update User
+                  Mette à jour
                 </button>
               </div>
             </form>

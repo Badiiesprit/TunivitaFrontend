@@ -11,7 +11,7 @@
       <span class="visually-hidden">Toggle Dropdown</span>
     </button>
     <ul cDropdownMenu>
-      <li><button cDropdownItem  
+      <li><button cDropdownItem
         *ngFor="let c of category.categorys; index as j"
         >{{c.title}}</button></li>
     </ul>
@@ -21,19 +21,19 @@
 <form class="d-flex" role="search">
   <div class="search-container">
       <input class="form-control me-2" type="search" name="search" placeholder="Search..."
-       >
-       <!-- [(ngModel)]="motcle" (input)="search()" -->
+      [(ngModel)]="motcle" (input)="search()">
+
       </div>
-  
+
         <div class="sort-container">
           <button class="sort-button" (click)="sortCentersByDate()">
             <span class="sort-icon" [class.asc]="sortOrder === 'asc'" [class.desc]="sortOrder === 'desc'"></span>
             <i class="fas fa-arrow-{{sort_direction}}-wide-short"></i>
-            <!-- <i class="fa-solid fa-arrow-up-wide-short"></i> -->        
+            <!-- <i class="fa-solid fa-arrow-up-wide-short"></i> -->
           </button>
         </div>
     </form>
-  
+
   <div class="card-container">
     <div class="card-wrapper">
       <div *ngFor="let center of filteredCenters | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage"
@@ -41,9 +41,9 @@
         <div class="image-container">
           <img [src]="baseurl + center.image[0].path" class="card-img-top" alt="..." width="200px" height="300px">
         </div>
-    
+
         <div class="card-body">
-          <h5 class="card-title">{{ center.name }}</h5>
+          <h5 class="card-title">{{ center.title }}</h5>
           <p class="card-text limited-description">{{ center.description }}</p>
           <p class="card-text"> <i class="fas fa-map-marker-alt"></i> {{ center.location }}</p>
           <div class="plus">
@@ -53,7 +53,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="pagination">
     <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="currentPage = 1">First</button>
     <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="currentPage = currentPage - 1">Previous</button>
@@ -63,6 +63,5 @@
     <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="currentPage = currentPage + 1">Next</button>
     <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="currentPage = totalPages">Last</button>
   </div>
-  
-  
-  
+
+
