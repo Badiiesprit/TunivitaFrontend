@@ -137,7 +137,6 @@ export class BlogDetailsComponent implements OnInit {
   showEdit(comment:Comment){
     this.showComment=true;
     this.commentIndex = this.comments.indexOf(comment);
-
     this.commentDetails=comment
   }
   showComment:boolean;

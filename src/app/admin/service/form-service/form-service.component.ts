@@ -70,4 +70,5 @@ export class FormServiceComponent implements OnInit {
     this.selectedFile = event.target.files[0];
     console.log(this.selectedFile);
   }
+
 }
