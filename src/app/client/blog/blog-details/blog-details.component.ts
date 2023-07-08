@@ -36,32 +36,48 @@ export class BlogDetailsComponent implements OnInit {
                 res => this.comments = res
               )
              }
-            
+
           )
       });
-      
+
   }
 
-  onSubmit(){
+  // onSubmit(){
+  //   var body = {
+  //     text: this.firstFormGroup.value.text,
+  //     Postid: this.myParam,
+
+  //   };
+  //   this.commentService.addComment(body).subscribe(
+  //     res =>{
+  //       this.firstFormGroup.reset();
+  //       this.ngOnInit();
+
+  //     }
+  //   )
+  // }
+  onSubmit() {
     var body = {
       text: this.firstFormGroup.value.text,
       Postid: this.myParam,
-      
     };
+
     this.commentService.addComment(body).subscribe(
-      res =>{
+      (res) => {
         this.firstFormGroup.reset();
-        this.ngOnInit();
-        
+        this.comments.push(res);
+      },
+      (error) => {
+        console.error(error);
       }
-    )
+    );
   }
   like(){
     this.commentService.like(this.myParam).subscribe(
       res =>{
         this.firstFormGroup.reset();
         this.ngOnInit();
-        
+
       }
     )
 
@@ -71,7 +87,7 @@ export class BlogDetailsComponent implements OnInit {
       res =>{
         //this.firstFormGroup.reset();
         this.ngOnInit();
-        
+
       }
     )
 
@@ -80,9 +96,9 @@ export class BlogDetailsComponent implements OnInit {
   htmlSelection:any;
   downloadAsPDF() {
     const doc = new jsPDF();
-  
+
     this.htmlSelection = document.querySelector('#myHtmlElement');
-  
+
     this.htmlSelection.style.width = '50mm';
     doc.html(this.htmlSelection, {
       callback: function () {
@@ -117,22 +133,22 @@ export class BlogDetailsComponent implements OnInit {
   showComment:boolean;
   updateComment(comment:any){
     const i = this.comments.indexOf(comment);
-    
-      
+
+
       var body = {
         _id: this.commentDetails._id,
         text:this.formComment.value,
-       
+
       };
-    
-    
+
+
     this.commentService.update(body).subscribe(() => {
       this.showComment=false;
       this.commentIndex=-1
       this.ngOnInit();
-      
+
     });
   }
-  
+
 
 }
