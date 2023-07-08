@@ -47,6 +47,20 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'profile',
+    component: DefaultLayoutCxComponent,
+    data: {
+      title: 'Profile'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./client/user/user.module').then((m) => m.UserModule)
+      }
+    ]
+  },
+  {
     path: 'admin/category',
     component: DefaultLayoutComponent,
     data: {
