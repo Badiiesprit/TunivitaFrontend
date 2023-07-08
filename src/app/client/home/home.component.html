@@ -13,7 +13,7 @@
     </div>
 </div>
 
-
+<h1> Liste Top Centers </h1>
 <div class="slides-carousel-center">
     <div class="card">
         <p-carousel [value]="slides" [numVisible]="3" [numScroll]="3" [circular]="false" >
@@ -28,6 +28,11 @@
     </div>
 </div>
 
+<div>
+    <div id="map"></div>
+</div>
+
+<h1> Liste Top Offres </h1>
 
 <div class="slides-carousel-servise">
     <div class="card">
@@ -42,4 +47,21 @@
         </p-carousel>
     </div>
 </div>
+
+<h1> Liste Top Servise </h1>
+
+<div class="slides-carousel-servise">
+    <div class="card">
+        <p-carousel [value]="slides" [numVisible]="3" [numScroll]="3" [circular]="false" >
+            <ng-template let-slide pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                    <div class="mb-3">
+                        <img src="{{ slide.src }}" [alt]="slide.title" class="w-6 shadow-2" [width]="200" [height]="200" />
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+</div>
+
 
