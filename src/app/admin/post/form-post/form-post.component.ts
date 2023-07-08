@@ -44,11 +44,11 @@ export class FormPostComponent {
       }
       console.log(this.post);
       this.postService.add(this.post).subscribe(() => {
-        this.route.navigate(['post/lister']);
+        this.route.navigate(['admin/post/lister']);
       });
     } else if (this.action == 'Modifier') {
       this.postService.update(this.post).subscribe(() => {
-        this.route.navigate(['post/lister']);
+        this.route.navigate(['admin/post/lister']);
       });
     }
   }

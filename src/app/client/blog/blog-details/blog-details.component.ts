@@ -5,6 +5,10 @@ import { CommentService } from 'src/app/services/admin/comment/comment.service';
 import { PostService } from 'src/app/services/admin/post/post.service';
 import { jsPDF } from 'jspdf';
 import { Comment } from 'src/app/model/comment';
+import { environment } from '../../../environments/environment';
+
+
+import html2canvas from 'html2canvas';
 
 
 @Component({
@@ -22,6 +26,8 @@ export class BlogDetailsComponent implements OnInit {
   comments:any;
   post: any;
   formComment = new FormControl('');
+  public baseurl = environment.url;
+
 
   firstFormGroup = this._formBuilder.group({
     text: ['']
@@ -69,6 +75,8 @@ export class BlogDetailsComponent implements OnInit {
       },
       (error) => {
         console.error(error);
+        this.ngOnInit();
+
       }
     );
   }
@@ -94,9 +102,9 @@ export class BlogDetailsComponent implements OnInit {
   }
 
   htmlSelection:any;
+
   downloadAsPDF() {
     const doc = new jsPDF();
-
     this.htmlSelection = document.querySelector('#myHtmlElement');
 
     this.htmlSelection.style.width = '50mm';
@@ -106,6 +114,8 @@ export class BlogDetailsComponent implements OnInit {
       }
     });
   }
+
+
 
   deleteComment(comment: Comment) {
     const i = this.comments.indexOf(comment);
@@ -149,6 +159,5 @@ export class BlogDetailsComponent implements OnInit {
 
     });
   }
-
 
 }

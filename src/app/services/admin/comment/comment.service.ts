@@ -36,7 +36,6 @@ export class CommentService {
 
   getCommentByPost(PostId:string){
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-
     return this.http.get<Comment []>(this.url+"comments-by-post/"+PostId,{ headers })
       .pipe(
         catchError((error: any) => {
@@ -65,7 +64,7 @@ export class CommentService {
 
   like(id: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-  
+
     return this.http.post<any>('http://localhost:5050/posts/like/' + id, null, { headers }).pipe(
       catchError((error) => {
         console.error('Error retrieving service:', error);
@@ -73,10 +72,10 @@ export class CommentService {
       })
     );
   }
-  
+
   dislike(id: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-  
+
     return this.http.post<any>('http://localhost:5050/posts/dislike/' + id, null, { headers }).pipe(
       catchError((error) => {
         console.error('Error retrieving service:', error);
@@ -90,7 +89,7 @@ export class CommentService {
 
     const formData: FormData = new FormData();
 
-    
+
     return this.http.post<any>(this.url + 'update/' + comment._id, comment, { headers }).pipe(
       catchError((error) => {
         console.error('Error updating service:', error);
