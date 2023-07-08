@@ -53,5 +53,27 @@ export class CenterService {
         throw error;
       })
     );
+
+  }
+
+  getTopCenter(nb : any): Observable<any> {
+    return this.http.get<Center[]>(environment.url+'center/gettopvus/'+nb)
+    .pipe(
+      catchError((error: any) => {
+        console.error('Une erreur s\'est produite lors de la récupération des services:', error);
+        throw error;
+      })
+    );
+    
+  }
+
+  getById(id:string): Observable<any> {
+    return this.http.get<Center []>(environment.url+'/centerget/'+id)
+      .pipe(
+        catchError((error: any) => {
+          console.error('Une erreur s\'est produite lors de la récupération des services:', error);
+          throw error;
+        })
+      );
   }
 }

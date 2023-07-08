@@ -1,10 +1,12 @@
-import { Component ,OnInit } from '@angular/core';
+import { Component , OnInit , AfterViewInit  } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { CenterService } from '../../services/client/center/center.service';
 import * as L from 'leaflet';
 import { HttpClient } from '@angular/common/http';
 import { Icon, icon } from 'leaflet';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Center } from 'src/app/model/center';
+import { environment } from 'src/app/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -12,11 +14,18 @@ import { Center } from 'src/app/model/center';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  slides: any[] = new Array(3).fill({id: -1, src: '', title: '', subtitle: ''});
+  public centers: any[] = new Array(0);
+  public baseurl = environment.url ;
+  public slides: any[] = new Array(0);
   public latitude:any ;
   public longitude:any;
-  constructor(private centerService : CenterService) {
+  public TopCente: any[] = new Array(0);
+  public DistanceCente: any[] = new Array(0);
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private centerService : CenterService) {
     this.latitude = 36.85329514812128;
     this.longitude = 10.20709812641144;
     if(localStorage.getItem('latitude')){
@@ -27,51 +36,38 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // async ngAfterViewInit(): Promise<void> {
+  //   await this.centerService.getTopCenter(10).subscribe(
+  //     (response:any) => {
+  //       console.log("getTopCenter");
+  //       console.log(response);
+  //       let index = 0;
+  //       response.result.forEach((center:any) => {
+  //         this.slides.push({
+  //           id: index++,
+  //           src: environment.url+center.image[0].path,
+  //           title: center.title,
+  //           subtitle: center.description,
+  //         })
+  //       });
+  //       console.log(this.slides);
+        
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching centers:', error);
+  //     }
+  //   );
+  // }
+
+
   ngOnInit(): void {
 
+
+    this.centerService.getTopCenter(10).subscribe(
+      (response:any) => {this.centers=response.result});
     this.initializeMap();
 
-    this.centerService.getCenterByDistance(20).subscribe(
-      (response:any) => {
-        console.log(response);
-      },
-      (error) => {
-        console.error('Error fetching centers:', error);
-      }
-    );
-
-    this.slides = [
-      {
-        id: 0,
-        src: 'https://picsum.photos/seed/picsum/1200/500',
-        title: 'First slide',
-        subtitle: 'Nulla vitae elit libero, a pharetra augue mollis interdum.',
-      },
-      {
-        id: 1,
-        src: 'https://picsum.photos/seed/picsum/1200/500',
-        title: 'Second slide',
-        subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      },
-      {
-        id: 2,
-        src: 'https://picsum.photos/seed/picsum/1200/500',
-        title: 'Second slide',
-        subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      },
-      {
-        id: 3,
-        src: 'https://picsum.photos/seed/picsum/1200/500',
-        title: 'Second slide',
-        subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      },
-      {
-        id: 4,
-        src: 'https://picsum.photos/seed/picsum/1200/500',
-        title: 'Second slide',
-        subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      },
-    ];
+   
   }
 
 
@@ -89,16 +85,21 @@ export class HomeComponent implements OnInit {
       iconAnchor: [12, 41],
       popupAnchor: [1, -34]
     });
-    this.centerService.getAll().subscribe(
+    this.centerService.getCenterByDistance(4000).subscribe(
       (response:any) => {
         if (response.result) {
-          const centers = response.result as Center[];
-          centers.forEach(center => {
-            console.log(center);
-            
-            if (center.altitude !== undefined && center.longitude !== undefined && center.title !== undefined) {
-              let marker = L.marker([parseFloat(center.altitude.toString()), parseFloat(center.longitude.toString())], { icon: greenIconMap }).addTo(map)
-              .bindPopup(center.title.toString());
+          
+          response.result.forEach((center:any )=> {
+   
+            if (center.center.altitude !== undefined && center.center.longitude !== undefined && center.center.title !== undefined) {
+              const popupContent = `
+                <div style="text-align: center">
+                  <p>le centre <b>${center.center.title}</b> est situé à environ <b>${center.distance}M</b> de vous</p>
+                  <img src="${environment.url}${center.center.image[0].path}" alt="Center Image" style="width: 100px; height: 100px;border-radius: 5%;" />
+                </div>
+              `;
+              let marker = L.marker([parseFloat(center.center.altitude.toString()), parseFloat(center.center.longitude.toString())], { icon: greenIconMap }).addTo(map)
+              .bindPopup(popupContent);
               marker.on('mouseover', function (e) {
                 marker.openPopup();
               });
@@ -112,16 +113,17 @@ export class HomeComponent implements OnInit {
       }
     )
     const greenIcon = icon({
-      iconUrl: 'assets/images/marker.png',
-      iconSize: [35, 41],
+      iconUrl: 'assets/images/man.png',
+      iconSize: [30, 55],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34]
     });
     let marker = L.marker([this.latitude ,this.longitude], { icon: greenIcon }).addTo(map) .bindPopup("Votre position actuelle");
-
-    
+ 
   }
 
-
+  showcenter(id:any){
+    this.router.navigate(['/centers/show/'+id]);
+  }
 
 }

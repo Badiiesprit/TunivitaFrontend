@@ -1,1 +1,59 @@
-<p>show-center works!</p>
+<div class="container">
+    <div class="row justify-content-center">
+  
+        <div class="card-body">
+            <div class="row justify-content-center">
+              <div class="col-md-12 text-center">
+                <div class="image-container">
+                  <img src="{{baseurl}}{{thiscenter.image.path}}" alt="Image description">
+                </div>
+              </div>
+              <div><h1 class="card-title text-center">{{thiscenter.tie}}</h1></div>
+                <div class="col-md-12">
+                  <p class="card-text">
+                    {{thiscenter.description}}
+                  </p>
+                </div>
+  
+                <div class="col-md-12">
+                  <p class="card-text">
+                    <span class="label"><i class="fa fa-calendar"></i></span><br>
+                    {{thiscenter.date}}
+                  </p>
+                </div>
+  
+                <div class="col-md-12">
+                  <p class="card-text">
+                    <span class="label"><i class="fa fa-phone"></i></span><br>
+                    {{thiscenter.phone}}
+                  </p>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-12">
+                    <p class="card-text">
+                      <span class="label"><i class="fa fa-envelope"></i></span><br> <!-- Icon for Email using Font Awesome -->
+                      {{thiscenter.email}}
+                    </p>
+                  </div>
+  
+                  <div class="col-md-12">
+                    <p class="card-text">
+                      <span class="label">
+                        <i class="fa-sharp fa-solid fa-location-dot"></i>
+                      </span><br>
+                      {{thiscenter.location}}
+                    </p>
+                  </div>
+  
+                  <div class="col-md-12 text-center bottom-QrCode-container">
+                    <div class="image-container">
+                      <img src="{{thiscenter.qrCode}}" alt="QrCode">
+                    </div>
+                  </div>
+  
+              <br/>
+  
+            </div>
+          </div>
+        </div>
+  

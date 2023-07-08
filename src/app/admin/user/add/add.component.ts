@@ -45,7 +45,7 @@ export class AddComponent {
 
     this.userService.add(this.user).subscribe(
       (response: User) => {
-        console.log(response); // Optional: Log the response from the server
+        console.log(response); 
         console.log('New user created successfully');
         this.router.navigate(['/admin/user']);
       },
