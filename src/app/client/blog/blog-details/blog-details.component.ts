@@ -51,7 +51,7 @@ export class BlogDetailsComponent implements OnInit {
   onSubmit(){
     var body = {
       text: this.firstFormGroup.value.text,
-      Postid: this.myParam,
+      Postid:this.myParam,
 
     };
     this.commentService.addComment(body).subscribe(

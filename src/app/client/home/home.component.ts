@@ -1,6 +1,8 @@
 import { Component , OnInit , AfterViewInit  } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { CenterService } from '../../services/client/center/center.service';
+import { ServiceService } from '../../services/admin/service/service.service';
+
 import * as L from 'leaflet';
 import { HttpClient } from '@angular/common/http';
 import { Icon, icon } from 'leaflet';
@@ -15,6 +17,8 @@ import { environment } from 'src/app/environments/environment';
 })
 export class HomeComponent implements OnInit {
   public centers: any[] = new Array(0);
+  public services: any[] = new Array(0);
+
   public baseurl = environment.url ;
   public slides: any[] = new Array(0);
   public latitude:any ;
@@ -25,7 +29,10 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private centerService : CenterService) {
+    private centerService : CenterService,
+    private serviceService : ServiceService
+
+    ) {
     this.latitude = 36.85329514812128;
     this.longitude = 10.20709812641144;
     if(localStorage.getItem('latitude')){
@@ -51,7 +58,7 @@ export class HomeComponent implements OnInit {
   //         })
   //       });
   //       console.log(this.slides);
-        
+
   //     },
   //     (error) => {
   //       console.error('Error fetching centers:', error);
@@ -67,7 +74,11 @@ export class HomeComponent implements OnInit {
       (response:any) => {this.centers=response.result});
     this.initializeMap();
 
-   
+    this.serviceService.getAll().subscribe(
+      (response) => {this.services=response.services});
+
+
+
   }
 
 
@@ -88,9 +99,9 @@ export class HomeComponent implements OnInit {
     this.centerService.getCenterByDistance(4000).subscribe(
       (response:any) => {
         if (response.result) {
-          
+
           response.result.forEach((center:any )=> {
-   
+
             if (center.center.altitude !== undefined && center.center.longitude !== undefined && center.center.title !== undefined) {
               const popupContent = `
                 <div style="text-align: center">
@@ -119,11 +130,14 @@ export class HomeComponent implements OnInit {
       popupAnchor: [1, -34]
     });
     let marker = L.marker([this.latitude ,this.longitude], { icon: greenIcon }).addTo(map) .bindPopup("Votre position actuelle");
- 
+
   }
 
   showcenter(id:any){
     this.router.navigate(['/centers/show/'+id]);
+  }
+  showservice(id:any){
+    this.router.navigate(['/client/services/show/'+id]);
   }
 
 }

@@ -133,7 +133,16 @@ export class ServiceService {
     );
   }
 
+  getTopService(nb : any): Observable<any> {
+    return this.http.get<Service[]>(environment.url+'gettopvus/'+nb)
+    .pipe(
+      catchError((error: any) => {
+        console.error('Une erreur s\'est produite lors de la récupération des services:', error);
+        throw error;
+      })
+    );
 
+  }
 
 
 }
