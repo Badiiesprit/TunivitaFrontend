@@ -55,13 +55,11 @@
 
 
     <div class="card-container second-section">
-              <div class="rec">
-                <p>Recommandé pour vous </p>
-              </div>
-
-
       <div class="slides-carousel-servise">
-          <p-carousel [value]="offers" [numVisible]="3" [numScroll]="3" [circular]="false" >
+        <div class="rec">
+          <p>Recommandé pour vous</p>
+        </div>
+        <p-carousel [value]="offers" [numVisible]="3" [numScroll]="3" [circular]="false" >
             <ng-template let-o pTemplate="item">
 
                 <div class="card">
@@ -89,12 +87,10 @@
   </div>
 
 
-
   </ng-template>
 
 </p-carousel>
 </div>
-
 </div>
 
 

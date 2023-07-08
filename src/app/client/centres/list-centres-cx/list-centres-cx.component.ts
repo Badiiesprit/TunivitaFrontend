@@ -16,7 +16,7 @@ import { Category } from 'src/app/model/category';
 export class ListCentresCxComponent {
   centers: any[] = [];
   categorys: any[] = [];
-  
+
   public motcle: string;
   public baseurl = environment.url;
   filteredCenters: any[] = [];
@@ -34,7 +34,7 @@ export class ListCentresCxComponent {
   ) {}
 
   ngOnInit() {
-    
+
     this.centerService.getCategorys().subscribe(
       (response) => {
         const res_categorys = response.result;
@@ -54,11 +54,11 @@ export class ListCentresCxComponent {
               }
             )
           }
-          
+
         });
         console.log("categorys");
         console.log(this.categorys);
-        
+
       },
       (error) => {
         console.error('Error fetching centers:', error);
@@ -82,7 +82,7 @@ export class ListCentresCxComponent {
   search(): void {
     if (this.motcle) {
       this.filteredCenters = this.centers.filter(center =>
-        center.name.toLowerCase().includes(this.motcle.toLowerCase()) ||
+        center.title.toLowerCase().includes(this.motcle.toLowerCase()) ||
         center.description.toLowerCase().includes(this.motcle.toLowerCase()) ||
         center.location.toLowerCase().includes(this.motcle.toLowerCase())
       );

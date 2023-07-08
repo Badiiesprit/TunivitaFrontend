@@ -38,7 +38,7 @@ export class ShowComponent {
               this.centreId = this.offre.center._id;
               this.offreService.getOffersByCenter(this.centreId).subscribe(
                 (response) => {
-                  this.offers = response;
+                  this.offers = response.filter((offer: any) => offer._id !== id);
                   console.log(this.offers);
                 },
                 (error) => {

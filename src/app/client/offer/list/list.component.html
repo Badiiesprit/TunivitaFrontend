@@ -5,7 +5,7 @@
     </div>
 
       <div class="sort-container">
-        <button class="sort-button" (click)="sortServicesByDate()">
+        <button class="sort-button" (click)="sortServicesByRate()" matTooltip="Tri par Rate" matTooltipPosition="above" >
           <span class="sort-icon" [class.asc]="sortOrder === 'asc'" [class.desc]="sortOrder === 'desc'"></span>
           <i class="fas fa-arrow-{{sort_direction}}-wide-short"></i> </button>
       </div>
