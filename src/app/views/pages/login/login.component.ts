@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(private tokenService:TokenService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    localStorage.clear();
     this.route.queryParams.subscribe(params => {
       this.resetSuccess = params['resetSuccess'] === 'true';
     });
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
           } else if (role.includes('user')) {
             window.location.href = '/';
           } else {
-            // Handle other roles or show an error message
+            window.location.href = '/';
           }
 
           console.log(localStorage);

@@ -66,7 +66,7 @@
             <div class="col-md-12">
               <div id="map"></div>
             </div>
-            
+
             <div class="col-md-6">
                 <div class="form-group">
                   <label for="longitude">Longitude</label>
@@ -145,7 +145,7 @@
                 <div class="form-group">
                   <label for="phone">Email</label>
                   <!-- [(ngModel)]="category.title"  -->
-                  <input type="email" class="form-control" id="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" name="email" required 
+                  <input type="email" class="form-control" id="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" name="email" required
                   [(ngModel)]="thiscenter.email" #ce="ngModel"
                   placeholder="Email">
                   <div class="text-danger text-capitalize"
@@ -175,7 +175,7 @@
               <div *ngIf="loading; else contentLoaded">
                 <button cButton class="m-1 success" disabled>
                   <c-spinner aria-hidden="true" size="sm"></c-spinner>
-                  Loading... 
+                  Loading...
                 </button>
               </div>
               <ng-template #contentLoaded>
@@ -191,7 +191,7 @@
               <div>{{messageText}}</div>
             </c-alert>
           </div>
-          
+
           <div *ngIf="messageIsError;">
             <c-alert color="danger" class="d-flex align-items-center">
               <span>✖</span>
@@ -203,5 +203,5 @@
       </c-card>
     </c-col>
 </c-row>
-  
+
 

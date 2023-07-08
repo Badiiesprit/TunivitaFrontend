@@ -32,7 +32,8 @@ export class FormOfferComponent implements OnInit {
     this.centerService.getAll().subscribe(
       (response:any) => {
         if (response.result) {
-          this.centers = response.result as Center[];
+          this.centers = response.result;
+          console.log(this.centers);
         }
       }
     );
@@ -47,6 +48,8 @@ export class FormOfferComponent implements OnInit {
         this.offer = response;
       });
     }
+
+
   }
 
   formatDate(date: string | null): string | null {

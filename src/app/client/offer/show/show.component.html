@@ -1,33 +1,28 @@
 <div class="container">
   <div class="row justify-content-center">
+    <div class="card-body first-section">
 
       <div class="card-body">
-          <div class="row justify-content-center"> <!-- Add justify-content-center class to center the row -->
-            <div class="col-md-12 text-center"> <!-- Add text-center class to center the content -->
+          <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
               <div class="image-container">
                 <img src="{{baseurl}}{{image.path}}" alt="Image description">
               </div>
             </div>
 
 
-            <div><h1 class="card-title text-center">{{service.name}}</h1></div>
+            <div><h1 class="card-title text-center">{{offre.name}}</h1></div>
               <div class="col-md-12">
                 <p class="card-text">
-                  {{service.description}}
+                  {{offre.description}}
                 </p>
               </div>
 
-              <div class="col-md-12">
-                <p class="card-text">
-                  <span class="label"><i class="fa fa-calendar"></i></span><br>
-                  {{service.date | date:'yyyy-MM-dd'}}
-                </p>
-              </div>
 
               <div class="col-md-12">
                 <p class="card-text">
                   <span class="label"><i class="fa fa-phone"></i></span><br>
-                  {{service.phone}}
+                  {{offre.center.phone}}
                 </p>
               </div>
 
@@ -36,7 +31,7 @@
                 <div class="col-md-12">
                   <p class="card-text">
                     <span class="label"><i class="fa fa-envelope"></i></span><br> <!-- Icon for Email using Font Awesome -->
-                    {{service.email}}
+                    {{offre.center.email}}
                   </p>
                 </div>
 
@@ -45,18 +40,70 @@
                     <span class="label">
                       <i class="fa-sharp fa-solid fa-location-dot"></i>
                     </span><br>
-                    {{service.location}}
+                    {{offre.center.location}}
                   </p>
                 </div>
-
-                <div class="col-md-12 text-center bottom-QrCode-container">
-                  <div class="image-container">
-                    <img src="{{service.qrCode}}" alt="QrCode">
-                  </div>
-                </div>
-
-            <br/>
-
           </div>
         </div>
       </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+    <div class="card-container second-section">
+              <div class="rec">
+                <p>Recommandé pour vous </p>
+              </div>
+
+
+      <div class="slides-carousel-servise">
+          <p-carousel [value]="offers" [numVisible]="3" [numScroll]="3" [circular]="false" >
+            <ng-template let-o pTemplate="item">
+
+                <div class="card">
+
+    <div class="image-container">
+      <img [src]="baseurl + o.image.path" class="card-img-top" alt="..." width="200px" height="300px">
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">{{ o.name }}</h5>
+      <p class="card-text limited-description">{{ o.description }}</p>
+      <p class="card-text"> <i class="fas fa-map-marker-alt"></i> {{ o.center.location }}</p>
+
+      <div class="rating">
+        <span class="star" [class.full]="o.averageRating >= 1" (click)="rateService(o._id, 1)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="o.averageRating >= 2" (click)="rateService(o._id, 2)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="o.averageRating >= 3" (click)="rateService(o._id, 3)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="o.averageRating >= 4" (click)="rateService(o._id, 4)"><i class="fas fa-star"></i></span>
+        <span class="star" [class.full]="o.averageRating >= 5" (click)="rateService(o._id, 5)"><i class="fas fa-star"></i></span>
+      </div>
+      <div class="plus">
+        <button [routerLink]="['/client/offer/show', o._id]">Voir plus</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  </ng-template>
+
+</p-carousel>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
