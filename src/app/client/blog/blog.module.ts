@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CardModule, GridModule, NavModule, UtilitiesModule, TabsModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
+import html2canvas from 'html2canvas';
 
 import {
   ButtonGroupModule,
@@ -18,6 +19,7 @@ import {
   FormModule,
   ListGroupModule,
   SharedModule,
+
 } from '@coreui/angular';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -56,7 +58,7 @@ import { jsPDF } from 'jspdf';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    
+
   ]
 })
 export class BlogModule { }
