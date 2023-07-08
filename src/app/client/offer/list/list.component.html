@@ -7,8 +7,7 @@
       <div class="sort-container">
         <button class="sort-button" (click)="sortServicesByDate()">
           <span class="sort-icon" [class.asc]="sortOrder === 'asc'" [class.desc]="sortOrder === 'desc'"></span>
-          <i class="fas fa-arrow-{{sort_direction}}-wide-short"></i>
-          <!-- <i class="fa-solid fa-arrow-up-wide-short"></i> -->        </button>
+          <i class="fas fa-arrow-{{sort_direction}}-wide-short"></i> </button>
       </div>
   </form>
 
@@ -23,7 +22,7 @@
     <div class="card-body">
       <h5 class="card-title">{{ offer.name }}</h5>
       <p class="card-text limited-description">{{ offer.description }}</p>
-      <p class="card-text"> <i class="fas fa-map-marker-alt"></i> {{ offer.location }}</p>
+      <p class="card-text"> <i class="fas fa-map-marker-alt"></i> {{ offer.center.location }}</p>
 
       <div class="rating">
         <span class="star" [class.full]="offer.averageRating >= 1" (click)="rateService(offer._id, 1)"><i class="fas fa-star"></i></span>
@@ -34,7 +33,7 @@
       </div>
 
       <div class="plus">
-        <button [routerLink]="['/client/offer/show', offer._id]"  > Voir plus</button>
+        <button [routerLink]="['/client/offer/show', offer._id]">Voir plus</button>
       </div>
     </div>
   </div>
