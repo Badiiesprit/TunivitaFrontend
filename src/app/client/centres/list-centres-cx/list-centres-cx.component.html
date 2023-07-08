@@ -1,5 +1,11 @@
 
 <div class="category-center-dropdown">
+  <c-dropdown placement="bottom-start"
+    variant="btn-group" class="category-parint-dropdown">
+    <button cButton (click)="serchbycategory(0)">
+      ALL
+    </button>
+  </c-dropdown>
   <c-dropdown
     *ngFor="let category of categorys; index as i"
     placement="bottom-start"
@@ -13,7 +19,7 @@
     <ul cDropdownMenu>
       <li><button cDropdownItem
         *ngFor="let c of category.categorys; index as j"
-        >{{c.title}}</button></li>
+        (click)="serchbycategory(c._id)" >{{c.title}}</button></li>
     </ul>
   </c-dropdown>
 </div>
