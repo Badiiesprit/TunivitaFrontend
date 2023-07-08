@@ -3,57 +3,90 @@
   
         <div class="card-body">
             <div class="row justify-content-center">
-              <div class="col-md-12 text-center">
-                <div class="image-container">
-                  <img src="{{baseurl}}{{thiscenter.image.path}}" alt="Image description">
-                </div>
-              </div>
-              <div><h1 class="card-title text-center">{{thiscenter.tie}}</h1></div>
+              <div><h1 class="card-title text-center">{{thiscenter.title}}</h1></div>
                 <div class="col-md-12">
-                  <p class="card-text">
+                  <p class="card-text" style="text-align: justify;">
                     {{thiscenter.description}}
                   </p>
                 </div>
-  
-                <div class="col-md-12">
-                  <p class="card-text">
-                    <span class="label"><i class="fa fa-calendar"></i></span><br>
-                    {{thiscenter.date}}
-                  </p>
-                </div>
-  
-                <div class="col-md-12">
+                <div class="col-md-6">
                   <p class="card-text">
                     <span class="label"><i class="fa fa-phone"></i></span><br>
                     {{thiscenter.phone}}
                   </p>
                 </div>
+                <div class="col-md-6">
+                  <p class="card-text">
+                    <span class="label"><i class="fa fa-envelope"></i></span><br> <!-- Icon for Email using Font Awesome -->
+                    {{thiscenter.email}}
+                  </p>
+                </div>
+                <div><h3 class="card-title text-left" style="font-size: 15px;">Location</h3></div>
                 <div class="col-md-12">
-                  <div class="col-md-12">
-                    <p class="card-text">
-                      <span class="label"><i class="fa fa-envelope"></i></span><br> <!-- Icon for Email using Font Awesome -->
-                      {{thiscenter.email}}
-                    </p>
+                  <p class="card-text d-flex justify-content-center align-items-end">
+                    <span class="label">
+                      <i class="fa-sharp fa-solid fa-location-dot"></i>
+                    </span><br>
+                    {{thiscenter.location}}
+                  </p>
+                </div>
+                <div class="col-md-12">
+                  <div id="map"></div>
+                </div>
+                <div><h3 class="card-title text-left"  style="font-size: 15px;">Gallary</h3></div>
+                <div class="col-md-12 row">
+                  <div class="text-center col-md-4"  *ngFor="let image of images">
+                    <img [src]="baseurl + image.path" class="rounded image-center" alt="..." sty>
                   </div>
-  
-                  <div class="col-md-12">
-                    <p class="card-text">
-                      <span class="label">
-                        <i class="fa-sharp fa-solid fa-location-dot"></i>
-                      </span><br>
-                      {{thiscenter.location}}
-                    </p>
-                  </div>
-  
-                  <div class="col-md-12 text-center bottom-QrCode-container">
-                    <div class="image-container">
-                      <img src="{{thiscenter.qrCode}}" alt="QrCode">
+                </div>
+                <div><h3 class="card-title "  style="font-size: 15px;">Submit Mail</h3></div>
+                <div class="col-md-12 w-50" style="margin-bottom: 50px;">
+                  <form class="row" (submit)="submitForm()" #f="ngForm">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="title">Subject</label>
+                        <!-- [(ngModel)]="category.title"  -->
+                        <input type="text" class="form-control" id="subject" name="subject" required minlength="3"
+                          [(ngModel)]="subject"
+                            placeholder="Title"  #ct="ngModel">
+                          <div class="text-danger text-capitalize"
+                            *ngIf="ct.invalid && ct.touched">
+                            <div *ngIf="ct.hasError('required')">
+                              this field is required
+                            </div>
+                            <div  *ngIf="ct.hasError('minlength')">
+                              minlength >= 3!
+                            </div>
+                          </div>
+                          <small id="titleHelp" class="form-text text-muted"></small>
+                      </div>
                     </div>
-                  </div>
-  
-              <br/>
-  
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="messager">Messager</label>
+                        <textarea class="form-control" id="messager" name="messager" required minlength="100"
+                        [(ngModel)]="messager" 
+                        rows="3" #cd="ngModel"></textarea>
+                        
+                        <div class="text-danger text-capitalize"
+                          *ngIf="cd.invalid && cd.touched">
+                          <div *ngIf="cd.hasError('required')">
+                            This field is required
+                          </div>
+                          <div  *ngIf="cd.hasError('minlength')">
+                            Minlength >= 100!
+                          </div>
+                        </div>
+                        <small id="descriptionHelp" class="form-text text-muted"></small>
+                      </div>
+                    </div>
+                    <div class="col-md-12 btn-submit-reset " style="margin-top: 10px;">
+                      <button cButton color="info" shape="rounded-pill" type="submit" style="margin-left: 10px;" [disabled]="f.invalid">Submit Mail</button>
+                    </div>
+                  </form>
+                </div>
+
             </div>
           </div>
         </div>
-  
+  </div>

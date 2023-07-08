@@ -68,7 +68,7 @@ export class CenterService {
   }
 
   getById(id:string): Observable<any> {
-    return this.http.get<Center []>(environment.url+'/centerget/'+id)
+    return this.http.get<Center []>(environment.url+'center/get/'+id)
       .pipe(
         catchError((error: any) => {
           console.error('Une erreur s\'est produite lors de la récupération des services:', error);
@@ -76,4 +76,15 @@ export class CenterService {
         })
       );
   }
+  getSundMail(id:string,subject:string,messager:string): Observable<any> {
+    const data = {subject , messager , id};
+    return this.http.post(environment.url+'center/sundmail',data)
+      .pipe(
+        catchError((error: any) => {
+          console.error('Une erreur s\'est produite lors de la récupération des services:', error);
+          throw error;
+        })
+      );
+  }
+  
 }
