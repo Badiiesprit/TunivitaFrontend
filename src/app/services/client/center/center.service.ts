@@ -33,4 +33,25 @@ export class CenterService {
       );
   }
 
+  getCenterByCategory(category : any): Observable<any> {
+    return this.http.get<Center []>(environment.url+'center/getbycategory/'+category)
+      .pipe(
+        catchError((error: any) => {
+          console.error('Une erreur s\'est produite lors de la récupération des services:', error);
+          throw error;
+        })
+      );
+  }
+
+  getCenterByDistance(distance : any): Observable<any> {
+    const latitude = localStorage.getItem('latitude');
+    const longitude = localStorage.getItem('longitude');
+    return this.http.get<Center[]>(environment.url+'center/getbydistance/'+distance+'/'+latitude+'/'+longitude)
+    .pipe(
+      catchError((error: any) => {
+        console.error('Une erreur s\'est produite lors de la récupération des services:', error);
+        throw error;
+      })
+    );
+  }
 }
