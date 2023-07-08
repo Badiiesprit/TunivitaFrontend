@@ -79,6 +79,37 @@ export class ListCentresCxComponent {
 
   }
 
+  serchbycategory(id:any): void {
+    if(id == 0){
+      this.centerService.getAll().subscribe(
+        (response) => {
+          this.centers = response.result;
+          this.filteredCenters = this.centers;
+          console.log(this.centers);
+          console.log(this.filteredCenters);
+        },
+        (error) => {
+          console.error('Error fetching centers:', error);
+        }
+      );
+    }else{
+      this.centerService.getCenterByCategory(id).subscribe(
+        (response) => {
+          console.log(response);
+          this.centers = response.result;
+          this.filteredCenters = this.centers;
+          console.log(this.centers);
+          console.log(this.filteredCenters);
+        },
+        (error) => {
+          console.error('Error fetching centers:', error);
+        }
+      );
+    }
+    
+
+  }
+
   search(): void {
     if (this.motcle) {
       this.filteredCenters = this.centers.filter(center =>
