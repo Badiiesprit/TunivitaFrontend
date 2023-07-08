@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { CarouselModule } from 'primeng/carousel';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from "./home.component";
 import {
@@ -15,7 +15,6 @@ import {
   SpinnerModule,
   AlertModule,
   TooltipModule,
-  CarouselModule,
   BadgeModule
 } from '@coreui/angular';
 

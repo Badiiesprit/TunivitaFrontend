@@ -16,7 +16,7 @@ import { Icon, icon } from 'leaflet';
 })
 export class FormComponent {
   icons = { cilCheck };
-  public thiscenter: Center = new Center();
+  public thiscenter: any;
   public selectedFile: FileList; // Variable pour stocker le fichier sélectionné
   public loading: boolean;
   public messageIsUnread: boolean = false;

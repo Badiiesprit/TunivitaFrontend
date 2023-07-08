@@ -29,7 +29,7 @@
               <div class="form-group">
                 <label for="thiscategoryparent">Category</label>
                 <select class="form-control" id="thiscategoryparent" name="parent" required
-                [(ngModel)]="thiscenter.category"  #cc="ngModel"
+                [(ngModel)]="thiscenter.category._id"  #cc="ngModel"
                 >
                   <option *ngFor="let category of categorys" value="{{ category._id }}">{{ category.title }}</option>
                 </select>
