@@ -191,7 +191,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'client/offre',
+    path: 'client/offer',
     component: DefaultLayoutCxComponent,
     data: {
       title: 'Offre'

@@ -5,6 +5,9 @@
 
 .first-section {
 margin-bottom: 20px;
+
+
+
 .QrCode {
   display: flex;
   justify-content: center;
@@ -21,8 +24,8 @@ margin-bottom: 20px;
 }
 
 .bottom-QrCode-container img {
-  max-width: 200px; /* Adjust the width as desired */
-  max-height: 200px; /* Adjust the height as desired */
+  max-width: 200px;
+  max-height: 200px;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
@@ -42,7 +45,7 @@ margin-bottom: 20px;
   max-width: 100%;
   width: 100%;
   height: 300px;
-  overflow: hidden;
+  object-fit: cover;
 }
 
 .card-title {
@@ -50,12 +53,14 @@ margin-bottom: 20px;
   font-weight: bold;
   margin-bottom: 10px;
   text-align: center;
+  word-wrap: break-word;
 }
 
 .card-text {
   font-size: 14px;
   margin-bottom: 8px;
-  text-align: center; /* Center-align the information */
+  text-align: center;
+  word-wrap: break-word;
 }
 
 .btn {
@@ -82,54 +87,55 @@ margin-bottom: 20px;
   border-radius: 50px;
   padding: 20px;
 }
-.card-body{
+
+.card-body {
   border-bottom-right-radius: 50px;
   border-bottom-left-radius: 50px;
   background-color: #fff;
-
 }
 
-  .card-header{
-  background-color:#004AAD;
+.card-header {
+  background-color: #004AAD;
   color: #fff;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
   height: 30px;
-  }
+}
 
+.card-title {
+  color: #004AAD;
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  word-wrap: break-word;
+}
 
-  .card-title {
-    color:#004AAD;
-    font-size: 50px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: center;
-  }
+.card-text {
+  font-size: 14px;
+  text-align: center;
+  margin: 10px 200px;
+  word-wrap: break-word;
+}
 
-  .card-text {
-    font-size: 14px;
-    text-align: center;
-    margin:10px 200px;
-  }
+.btn {
+  background-color: #004AAD;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
 
-  .btn {
-    background-color: #004AAD;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-  }
+.btn:hover {
+  background-color: #BDD1F9;
+}
 
-  .btn:hover {
-    background-color: #BDD1F9;
-  }
-
-  .label {
-    font-weight: bold;
-    color: #004AAD;
-  }
+.label {
+  font-weight: bold;
+  color: #004AAD;
+}
 
 }
 
@@ -141,159 +147,90 @@ margin-bottom: 20px;
 .second-section {
   margin-top: 20px;
   border-radius: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
   background-color: #fff;
 
-  .rec{
+  .rec {
     margin: 30px;
   }
 
-  .card .image-container {
-    width: 100%; /* Set the width of the container to 100% of the card */
-    height: 300px;
-    overflow: hidden;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-
-  }
-
-  .card .image-container img {
-    width: 100%;
-    height: 100%; /* Let the height adjust automatically to maintain aspect ratio */
-    object-fit: cover; /* Crop and fit the image within the container */
-  }
-
-  .card .limited-description {
-    width: 100%;
-    max-height: 3em; /* Set the maximum height to show three lines */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* Limit the text to three lines */
-    -webkit-box-orient: vertical;
-  }
-
-
-  .search-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    width: 90%;
-    border-radius: 100px;
-
-  }
-  .search-container .form-control {
-    flex: 1;
-    margin-right: 10px;
-    border-radius: 100px;
-    margin-left: 30px;
-  }
-
-  .sort-button {
-    width: 40px; /* Adjust the size of the button as needed */
-    height: 40px;
-    border-radius: 20px; /* Make the button circular */
-    border-width: 1px;
-    border-color:#004AAD ;
-    background-color: white; /* Add background color to the button */
+  .p-carousel {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    position: relative; /* Add position relative */
-  }
-  .fas {
-    color:#004AAD ;
-  }
-  .sort-icon.asc {
-    transform: translate(-50%, -50%) rotate(180deg); /* Apply rotation for ascending icon */
-  }
-  .card-container {
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-    grid-gap: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-
-  .card-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-
   }
 
   .card {
-    margin-right: 20px;
+    width: 20rem; /* Set a fixed width for the cards */
+    margin-right: 10px;
     margin-bottom: 30px;
-    height: 400px;
+    height: 80%; /* Allow the cards to expand vertically */
     border-radius: 30px;
     cursor: pointer;
   }
 
+  .card .image-container {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
 
-    .pagination {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-    }
+  .card .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-    .pagination button {
-      margin: 0 3px;
-      padding: 5px 10px; /* Adjust the padding */
-      font-size: 14px;
-      background-color: #004AAD;
-      color: #fff;
-    }
+  .card .limited-description {
+    width: 100%;
+    max-height: 3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
 
-    .pagination button:hover {
-      background-color: #fff;
-      color: #004AAD;
-      border: 1px solid #004AAD;
-    }
+  .fas {
+    color: #004AAD;
+  }
 
-    .pagination-number {
-      margin: 0 3px; /* Reduce the horizontal margin */
-      font-size: 14px;
-      cursor: pointer;
-    }
+  .sort-icon.asc {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
 
-    .pagination-number.active {
-      font-weight: bold;
-    }
+  .plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .plus {
-      display: flex;
-      align-items: center;
-      justify-content: center; /* Align items vertically in the center */
-    }
+  .plus p {
+    margin-right: 70px;
+    margin-bottom: 0;
+  }
 
-    .plus p {
-      margin-right: 70px;
-      margin-bottom: 0;/* Add some spacing between the date and the button */
-    }
-    .plus button {
-      margin-right: auto;
-      background-color: #fff; /* Add some spacing between the date and the button */
-      color: #004AAD;
-      border: none;
-    }
-    .plus button:hover {
-      margin-right: auto;
-      background-color: #004AAD; /* Add some spacing between the date and the button */
-      color: #fff;
-      border-radius: 50px;
-      border-color: none;
-      padding: 5px 10px;
-    }
+  .plus button {
+    margin-right: auto;
+    background-color: #fff;
+    color: #004AAD;
+    border: none;
+  }
 
+  .plus button:hover {
+    margin-right: auto;
+    background-color: #004AAD;
+    color: #fff;
+    border-radius: 50px;
+    border-color: none;
+    padding: 5px 10px;
+  }
 
-  /* Star Rating Styles */
   .star-rating {
     display: inline-block;
     font-size: 1rem;
@@ -306,8 +243,6 @@ margin-bottom: 20px;
     cursor: pointer;
   }
 
-
-  /* Star Rating Styles */
   .rating {
     display: inline-block;
     font-size: 1rem;
@@ -327,6 +262,7 @@ margin-bottom: 20px;
   .rating .star.full i {
     color: #ffcc00;
   }
+
   .rating .star:hover i,
   .rating .star.selected i {
     color: #ffcc00;

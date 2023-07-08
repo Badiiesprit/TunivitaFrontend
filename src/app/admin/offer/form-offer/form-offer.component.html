@@ -20,8 +20,9 @@
     <div class="col-md-6">
       <div class="form-group">
         <label for="thiscategoryparent">Center:</label>
-        <select class="form-control" id="thiscategoryparent" name="parent" required [(ngModel)]="offer.center._id"  #cc="ngModel">
-          <option *ngFor="let center of centers" [value]="center._id">{{ center.title }}</option>
+        <select class="form-control" id="thiscategoryparent" name="parent" required [(ngModel)]="offer.center"  #cc="ngModel">
+          <option *ngFor="let center of centers"  [value]="center._id">{{ center.title }}</option>
+
         </select>
         <div class="text-danger text-capitalize"
             *ngIf="cc.invalid && cc.touched">
